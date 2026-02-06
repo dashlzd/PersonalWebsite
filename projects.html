@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container row">
+      <a class="brand" href="index.html">Your Name</a>
+
+      <button class="navBtn" type="button" aria-expanded="false" aria-controls="nav">
+        ☰
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="index.html" data-nav>Home</a>
+        <a href="projects.html" data-nav>Projects</a>
+        <a href="cv.html" data-nav>CV</a>
+        <a href="about.html" data-nav>About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Projects</h1>
+
+    <div class="grid">
+      <article class="card" data-project data-title="Project A" data-desc="Short description for Project A.">
+        <h2>Project A</h2>
+        <p class="muted">One line summary.</p>
+        <button class="btn ghost" type="button" data-open>Details</button>
+      </article>
+
+      <article class="card" data-project data-title="Project B" data-desc="Short description for Project B.">
+        <h2>Project B</h2>
+        <p class="muted">One line summary.</p>
+        <button class="btn ghost" type="button" data-open>Details</button>
+      </article>
+    </div>
+  </main>
+
+  <!-- Simple modal -->
+  <div class="modal" hidden data-modal>
+    <div class="backdrop" data-close></div>
+    <div class="panel" role="dialog" aria-modal="true">
+      <button class="x" type="button" data-close aria-label="Close">✕</button>
+      <h3 id="mTitle">Title</h3>
+      <p id="mDesc" class="muted">Description</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container row">
+      <span>© <span data-year></span> Your Name</span>
+      <a href="#top">Top</a>
+    </div>
+  </footer>
+</body>
+</html>

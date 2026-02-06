@@ -1,0 +1,427 @@
+:root{
+  --bg:#0b0c10;
+  --fg:#e9ecf1;
+  --muted:#9aa4b2;
+  --card:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.12);
+  --accent:#7c5cff;
+  --max:1000px;
+}
+
+*{ box-sizing:border-box; }
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:var(--fg);
+}
+a{ color:inherit; }
+.container{ width:min(var(--max), calc(100% - 2rem)); margin:0 auto; }
+.row{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.muted{ color:var(--muted); }
+
+.header{
+  position:sticky; top:0;
+  border-bottom:1px solid var(--border);
+  background:rgba(11,12,16,.9);
+}
+
+.brand{ 
+  font-weight:700;
+  text-decoration:none; 
+  padding:1rem 0; 
+  margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
+}
+
+.navBtn{
+  margin-right: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--fg);
+  padding:.4rem .6rem;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.nav{
+  margin-right: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
+  display:none;
+  gap:.9rem;
+  align-items:center;
+}
+.nav a{
+  text-decoration:none;
+  padding:.3rem .5rem;
+  border-radius:10px;
+}
+.nav a.active{
+  border:1px solid var(--border);
+  background:rgba(124,92,255,.18);
+}
+
+.nav.open{
+  display:flex;
+  position:absolute;
+  right:5rem;
+  top:64px;
+  flex-direction:column;
+  padding:.7rem;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(11,12,16,.95);
+
+}
+
+@media (min-width: 800px){
+  .navBtn{ display:none; }
+  .nav{ display:flex; }
+}
+
+main{   
+  flex: 1;                 /* fills leftover space */
+  min-height: 1080px;   /* optional: forces more height so you can scroll on short screens */
+}
+
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:1rem;
+}
+@media (min-width: 900px){
+  .grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+.card{
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--card);
+  padding:1rem;
+}
+
+.btn{
+  border:1px solid var(--border);
+  background:rgba(124,92,255,.18);
+  color:var(--fg);
+  padding:.5rem .8rem;
+  border-radius:999px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn.ghost{ background:transparent; }
+
+
+/* Modal */
+.modal[hidden]{ display:none; }
+.modal{
+  position:fixed; inset:0;
+  display:grid; place-items:center;
+  padding:1rem;
+}
+.backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.panel{
+  position:relative;
+  width:min(520px, 100%);
+  border:1px solid var(--border);
+  background:rgba(11,12,16,.95);
+  border-radius:14px;
+  padding:1rem;
+}
+.x{
+  position:absolute; right:.6rem; top:.6rem;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--fg);
+  border-radius:10px;
+  padding:.2rem .5rem;
+  cursor:pointer;
+}
+
+main.right{
+  position: relative;
+  overflow: hidden;  
+  display: flex;
+  flex-direction: column;  /* stack box + buttons vertically */
+  align-items: left;     /* center the whole main content */
+  justify-content: flex-start;
+  height: min(1080px, 100vh); 
+}
+
+.mainVideo{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.mainOverlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+main.right .box,
+main.right .btnRow{
+  position: relative;
+  z-index: 2;
+}
+
+main.right .box{
+  width: min(520px, 100%);
+  padding-top: 6rem; /* top margin for top*/
+  margin-left: auto;   /* push to the far right */
+  margin-right: 5rem;
+  text-align: right; 
+}
+
+main.right .box h1{
+  font-size: 4rem;  
+  margin: 0;           /* kills all h1 margins */
+  padding: 0;          /* kills the h1 padding from your global rule */
+  line-height: 1;      /* tighter line box */
+}
+main.right .box p{
+  margin: 0;           /* kills paragraph top margin */
+  position: relative;
+  left: -1.2rem;
+  white-space: nowrap; /* for phone */
+  font-size: 0.7rem; 
+}
+  @media (max-width: 480px){ 
+  main.right .box p{
+    font-size: 0.95rem;
+    padding-left: clamp(10px, 1.6vw, 6rem);
+  } /* for phone */
+}
+
+
+.btnRow .btn.ghost{
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--fg);
+  text-decoration: none;
+  padding: .35rem .7rem;
+  border-radius: 20px;
+  transition: background .4s ease, border-color .4s ease, transform .4s ease;
+  border: 1px solid transparent;
+}
+
+.btnRow .btn.ghost:hover{
+  background: color-mix(in srgb, var(--hbg) 35%, transparent);
+  transform: translateX(20px) scale(1.2);
+}
+main.right .btnRow{
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-top: 9rem;
+
+  width: fit-content;
+ margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
+
+}
+
+main.right .btnRow .btn{
+  border: none;
+  background: transparent; /* if you want pure text */
+}
+
+.pageWrap{
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;      /* center */
+}
+
+html, body { margin: 0; padding: 0; }
+
+.container{
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.pageWrap{ outline: 3px solid red; }
+.container{ outline: 3px solid lime; }
+main.right{ outline: 3px solid cyan; }
+
+
+
+.footer{
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+  color: var(--muted);
+
+  display: flex;
+  justify-content: center;   /* centers the inner row block */
+}
+
+html, body { height: 100%; margin: 0; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; } /* footer pushed to bottom */
+
+.footerRow{
+  width: 100%;
+  max-width: 1920px;         /* match your site cap */
+  padding-inline: clamp(8px, 2vw, 40px);
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;       /* vertical center */
+  gap: 1rem;
+}
+
+.footerLeft{
+  justify-self: start;
+}
+
+.footerEmail{
+  justify-self: center;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+
+.footerRight{
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 2rem;     /* more space between icons */
+  flex-wrap: nowrap; /* prevent wrapping/overlap */
+}
+
+.footerEmail:hover{
+  filter: drop-shadow(0 0 8px rgb(233, 231, 240));
+}
+
+
+
+.iconLink{
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  border: none;          /* remove boundary */
+  background: transparent;
+  border-radius: 0;      /* optional: remove rounding */
+}
+
+.iconLink:hover{
+  filter: drop-shadow(0 0 8px rgba(124,92,255,.35));
+}
+
+.iconLink img{
+   width: 64px;      /* was 40px */
+  height: 64px;     /* was 40px */
+  border: 0px solid var(--border);
+  border-radius: 14px;  /* slightly rounder */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.iconLink:hover{
+  border-color: var(--fg);
+}
+/* Mobile: stack nicely */
+@media (max-width: 600px){
+  .footerRow{
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+  }
+  .footerLeft, .footerEmail, .footerRight{
+    justify-self: center;
+  }
+  .footerRight{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* 2-column layout */
+.split{
+  min-height: calc(100vh - var(--headerH, 0px));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT pane */
+.leftPane{
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.leftInner{
+  max-width: 520px;
+}
+
+.leftTitle{
+  margin: 0 0 12px;
+  letter-spacing: .08em;
+}
+
+.leftText{
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.leftList p{
+  margin: 8px 0;
+}
+
+/* RIGHT pane (your existing “right” main style, but as a section) */
+.rightPane{
+  position: relative;
+  overflow: hidden;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+/* overlay on the RIGHT pane */
+.rightPane .mainOverlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 0;
+}
+
+.rightPane > *:not(.mainOverlay){
+  position: relative;
+  z-index: 1;
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 900px){
+  .split{
+    grid-template-columns: 1fr;
+  }
+  .leftPane{
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
