@@ -227,8 +227,7 @@ main.right .btnRow{
   margin-top: 9rem;
 
   width: fit-content;
- margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
-
+  margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
 }
 
 main.right .btnRow .btn{
@@ -242,7 +241,7 @@ main.right .btnRow .btn{
   margin: 0 auto;      /* center */
 }
 
-html, body { margin: 0; padding: 0; }
+html, body { height: 100%; margin: 0; padding: 0; }
 
 .container{
   width: 100%;
@@ -257,6 +256,9 @@ main.right{ outline: 3px solid cyan; }
 
 
 
+
+/*FOOTER*/
+
 .footer{
   border-top: 1px solid var(--border);
   padding: 1rem 0;
@@ -266,9 +268,23 @@ main.right{ outline: 3px solid cyan; }
   justify-content: center;   /* centers the inner row block */
 }
 
-html, body { height: 100%; margin: 0; }
-body { min-height: 100vh; display: flex; flex-direction: column; }
-main { flex: 1; } /* footer pushed to bottom */
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+/* header / main / footer */
+body{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;       /* IMPORTANT: stop body scroll */
+}
+
+/* allow main to shrink so children can scroll */
+main{
+  min-height: 0;
+}
+
 
 .footerRow{
   width: 100%;
@@ -355,65 +371,170 @@ main { flex: 1; } /* footer pushed to bottom */
 }
 
 
+/*SPLIT CODE*/
 
-
-
-/* 2-column layout */
 .split{
-  min-height: calc(100vh - var(--headerH, 0px));
+  height: 100%;
+  overflow: hidden;           /* prevent body/page scroll inside this area */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 7fr;
+
+  background-image: url("assets/images/about-pg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* keeps background fixed (desktop) */
 }
 
-/* LEFT pane */
-.leftPane{
-  padding: 28px 24px;
-  border-right: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
-}
+/* each panel scrolls separately */
+.leftPane
+{
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-.leftInner{
-  max-width: 520px;
-}
-
-.leftTitle{
-  margin: 0 0 12px;
-  letter-spacing: .08em;
-}
-
-.leftText{
-  color: var(--muted);
-  line-height: 1.7;
-  margin: 0 0 18px;
-}
-
-.leftList p{
-  margin: 8px 0;
-}
-
-/* RIGHT pane (your existing “right” main style, but as a section) */
-.rightPane{
   position: relative;
-  overflow: hidden;
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 16px;
+  background: rgba(255,255,255,0);
+
+  /*deactivate the scroll bar*/
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge legacy */
 }
 
-/* overlay on the RIGHT pane */
-.rightPane .mainOverlay{
+.rightPane{
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: relative;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255,255,255,0);
+
+  /*deactivate the scroll bar*/
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge legacy */
+}
+
+/*scroll bar not working*/
+.leftPane::-webkit-scrollbar,
+.rightPane::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  display: none;                /* Chrome/Safari */
+}
+
+.leftPane{
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontal center */
+  background: rgba(0, 0, 0, 0.466);   /* adjust darkness */
+  padding-top: 100px; /* adjust */
+  /* optional: glass effect */
+
+  border-right: 0; }
+
+/* overlays (won’t block scrolling) */
+.leftPane::before{
+ display: none;
+}
+.rightPane::before{
+  content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.7);
   z-index: 0;
+  pointer-events: none;
 }
 
-.rightPane > *:not(.mainOverlay){
+.leftPane::before{ background: rgba(0,0,0,0.60); }
+.rightPane::before{ background: rgba(0,0,0,0.12); }
+
+/* keep content above overlay — NO overflow here */
+.leftPane > *
+{
   position: relative;
   z-index: 1;
 }
+
+.rightPane > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* left pane buttons: vertical stack, left aligned */
+.leftPane .btnRow{
+  margin-left: -12px;
+  /*padding: -30px 0px 0px 0px;  /* top right bottom left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px; /* spacing between buttons */
+}
+
+
+
+/* optional: make each button fit its content (not full width) */
+.leftPane .btnRow .btn{
+  font-size: 3rem;
+  width: fit-content;
+}
+
+
+.rightPane .box h1{
+  font-size: 3rem;
+  text-align: right;
+  padding-top: 100px;
+  padding-right: 180px;
+  margin: 0;
+}
+
+.rightPane .box p{
+  font-size: 1rem;
+  margin: 4px 0 0;           /* kills paragraph top margin */
+  text-align: right;
+  padding-top: 0px;
+  padding-right: 180px;
+  margin-left: 0;
+}
+
+/*introduction*/
+
+.rightPane .box .intro{
+
+  font-size: 1.5rem;
+  font-weight: 300; 
+
+  margin-left: auto;        /* keep the block on the right side */
+  max-width: 60ch;
+
+  text-align: justify;      /* justify both sides */
+  text-justify: inter-word;
+
+  line-height: 1.6;
+  color: rgb(255, 255, 255);
+
+  padding-right: 180px;
+  padding-left: 0;
+}
+
+
+/* mobile: stack */
+@media (max-width: 900px){
+  .split2{ grid-template-columns: 1fr; }
+  .leftPane{
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
 
 /* responsive: stack on small screens */
 @media (max-width: 900px){
