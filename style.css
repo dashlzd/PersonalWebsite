@@ -406,6 +406,31 @@ main{
   -ms-overflow-style: none;     /* IE/Edge legacy */
 }
 
+
+
+.leftPane{
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontal center */
+  background: rgba(0, 0, 0, 0.50);   /* adjust darkness */
+  padding-top: 200px; /* adjust */
+  /* optional: glass effect */
+
+  border-right: 0; }
+
+/* overlays (won’t block scrolling) */
+.leftPane::before{
+ display: none;
+}
+
+/*scroll bar not working*/
+.leftPane::-webkit-scrollbar,
+.rightPane::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  display: none;                /* Chrome/Safari */
+}
+
 .rightPane{
   height: 100%;
   min-height: 0;
@@ -417,42 +442,22 @@ main{
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: rgba(255,255,255,0);
+  background: rgba(0, 0, 0, 0.350);
 
   /*deactivate the scroll bar*/
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* IE/Edge legacy */
 }
 
-/*scroll bar not working*/
-.leftPane::-webkit-scrollbar,
-.rightPane::-webkit-scrollbar{
-  width: 0;
-  height: 0;
-  display: none;                /* Chrome/Safari */
-}
-
-.leftPane{
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* horizontal center */
-  background: rgba(0, 0, 0, 0.466);   /* adjust darkness */
-  padding-top: 100px; /* adjust */
-  /* optional: glass effect */
-
-  border-right: 0; }
-
-/* overlays (won’t block scrolling) */
-.leftPane::before{
- display: none;
-}
 .rightPane::before{
   content: "";
-  position: absolute;
+  position: sticky;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 }
+
+
 
 .leftPane::before{ background: rgba(0,0,0,0.60); }
 .rightPane::before{ background: rgba(0,0,0,0.12); }
@@ -472,6 +477,7 @@ main{
 /* left pane buttons: vertical stack, left aligned */
 .leftPane .btnRow{
   margin-left: -12px;
+  margin-bottom: 50px;
   /*padding: -30px 0px 0px 0px;  /* top right bottom left */
   display: flex;
   flex-direction: column;
@@ -488,12 +494,62 @@ main{
 }
 
 
+
+
+/*MYSTORY*/
+
+
+.leftPane .leftDivider{
+  height: 1px;
+  background: rgba(255,255,255,0.55);
+  
+  width: 85%;
+  max-width: 520px;     /* optional: cap it */
+  align-self: center;  /* important if leftPane is flex */
+  box-sizing: border-box;                      /* above overlay */
+}
+
+.leftPane .myStory{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.leftPane .myStory h3{
+  margin: 0 0 12px;
+  text-align: left;
+  font-size: 1.5rem;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.95);
+}
+
+.leftPane .myStory p{
+  margin: 0;
+  text-align: left;
+  font-size: 1.5rem;
+  max-width: 50ch;
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+}
+
+
+
+/*RIGHTPANE*/
+
 .rightPane .box h1{
   font-size: 3rem;
   text-align: right;
   padding-top: 100px;
   padding-right: 180px;
   margin: 0;
+}
+
+.rightPane .box .nameLine{
+  width: 44%;
+  height: 1.35px;
+  background: rgb(255, 255, 255);
+
+  margin: 0px 180px 0px auto; /* right padding = 180px, align right */
 }
 
 .rightPane .box p{
@@ -526,6 +582,199 @@ main{
 }
 
 
+
+/*BIOGRAPHY*/
+.rightPane .bioTitle{
+  padding-right: 180px; 
+  position: relative;
+  margin: 100px 0 0 0;
+  padding-left: 10px;   /* increase to push more right; decrease to push left */
+  text-align: left;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.95);
+}
+
+.rightPane .bioTitle::after{
+  content:"";
+  display: block;
+  width: 100%;          /* line length */
+  height: 1px;           /* line thickness */
+  background: rgb(255, 255, 255);
+}
+
+
+
+/* card-like buttons */
+.rightPane .linkGrid{
+  margin-top: 0px;
+  padding-right: 180px;          /* match your right offset */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 14px;
+  justify-content: end;          /* keep the grid on the right side */
+  align-content: start;
+}
+
+.rightPane .linkCard{
+  text-decoration: none;
+  height: 140px; 
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  transition: transform .25s ease, border-color .25s ease;
+
+  position: relative;
+  overflow: hidden;
+
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* dark overlay so text stays readable */
+.rightPane .linkCard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0, 0, 0, 0.589);   /* faint image */
+  transition: background .25s ease; /* smooth both directions */
+  pointer-events:none;
+}
+
+/* keep text above the overlay */
+.rightPane .linkCard > *{
+  position: relative;
+  z-index: 1;
+}
+
+.rightPane .linkCard:hover{
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.274);
+}
+
+/* optional: hover brighten image */
+.rightPane .linkCard:hover::before{
+  background: rgba(3, 3, 3, 0.329);  /* lighter = image looks stronger */
+}
+
+.rightPane .linkTitle{
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.rightPane .linkDesc{
+  margin-top: 6px;
+  font-size: .85rem;
+  font-weight: 300;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.78);
+}
+
+
+/*EDUCATION& WORKING EXPERIENCE*/
+.rightPane .resumeBlock{
+  margin-top: 0px;
+  padding-right: 180px;  /* match your right content offset */
+}
+
+.rightPane .resumeTitle{
+  text-align: left;
+  margin: 100px 0 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,0.95);
+}
+
+.rightPane .resumeTitle::after{
+  content:"";
+  display: block;
+  width: 100%;          /* line length */
+  height: 1px;           /* line thickness */
+  background: rgb(255, 255, 255);
+}
+
+
+.rightPane .resumeHead{
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.rightPane.resumeHead.highlight{
+  padding-left: 12px;
+  border-left: 3px solid rgba(255,255,255,0.35);
+}
+
+.rightPane .resumeRole{
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+}
+
+.rightPane .resumeTime{
+  font-weight: 450;
+  color: rgb(255, 255, 255);
+}
+
+
+.rightPane .resumeDesc{
+  margin: 0px 0 36px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255,255,255,0.80);
+}
+
+
+
+/*CONTACT*/
+
+.rightPane .contactBlock .resumeTitle{
+  text-align: right;
+}
+
+.rightPane .contactBlock .resumeTitle::after{
+  margin-left: auto;
+  content:"";
+  display: block;
+  width: 20%;          /* line length */
+  height: 1px;           /* line thickness */
+  background: rgb(255, 255, 255);
+}
+
+/* bigger value text (email + tel) */
+.rightPane .contactLink{
+  font-size: 1rem;     /* adjust */
+  font-weight: 300;      /* optional */
+  color: #fff;
+}
+
+/* keep label a bit smaller (optional) */
+.rightPane .contactLabel{
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+/* more space between Email row and Tel row */
+.rightPane .contactRow{
+  text-align: right;
+  padding-top: 5px;
+  margin-bottom: 20px;   /* gap between the two rows */
+}
+
+.rightPane .contactRow:last-child{
+  margin-bottom: 60px;
+}
+
+
+
+
 /* mobile: stack */
 @media (max-width: 900px){
   .split2{ grid-template-columns: 1fr; }
@@ -546,3 +795,5 @@ main{
     border-bottom: 1px solid var(--border);
   }
 }
+
+
