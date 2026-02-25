@@ -385,38 +385,75 @@ main{
   background-repeat: no-repeat;
   background-attachment: fixed; /* keeps background fixed (desktop) */
 }
-
 /* each panel scrolls separately */
+
+/*icon*/
+
+
+.profileIcon{
+  width: 180px;
+  height: 180px;
+  margin-left: 60px;
+  border-radius: 80%;     /* circle */
+  overflow: hidden;       /* clip image to circle */
+  display: inline-block;
+
+  transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+  transform-origin: left center;
+}
+
+
+.profileIcon img{
+  overflow: hidden;   
+  object-position: left center; /* align the crop to left */
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-right: auto;
+  display: inline-block;
+
+  transform-origin: left center;
+}
+.profileIcon:hover{
+  transform: translateY(-2px) scale(1.08);
+  /* glow */
+  box-shadow:
+    0 0 10px rgba(112, 230, 210, 0.55),
+    0 0 26px rgba(77, 165, 168, 0.479),
+    0 0 60px rgba(9, 52, 63, 0.2);
+
+  filter: brightness(1.05);
+
+}
+
+.leftPane .box1 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 25px;
+
+}
+
 .leftPane
 {
+  border-right: 0;
   height: 100%;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-
+  align-items: center;  
   position: relative;
-  padding: 28px 24px;
+  padding: 0px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: rgba(255,255,255,0);
+  background: rgba(0, 0, 0, 0.50); 
 
   /*deactivate the scroll bar*/
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* IE/Edge legacy */
 }
 
-
-
-.leftPane{
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* horizontal center */
-  background: rgba(0, 0, 0, 0.50);   /* adjust darkness */
-  padding-top: 200px; /* adjust */
-  /* optional: glass effect */
-
-  border-right: 0; }
 
 /* overlays (won’t block scrolling) */
 .leftPane::before{
@@ -474,6 +511,8 @@ main{
   z-index: 1;
 }
 
+
+
 /* left pane buttons: vertical stack, left aligned */
 .leftPane .btnRow{
   margin-left: -12px;
@@ -485,6 +524,14 @@ main{
   gap: 12px; /* spacing between buttons */
 }
 
+.leftPane .btnRow::before{
+  margin-top: 0px;
+  content:"";
+  display: block;
+  width: 100%;          /* line length */
+  height: 1px;           /* line thickness */
+  background: rgb(255, 255, 255);
+}
 
 
 /* optional: make each button fit its content (not full width) */
@@ -493,46 +540,72 @@ main{
   width: fit-content;
 }
 
-
+.leftPane .btnRow::after{
+  margin-top: 5px;
+  content:"";
+  display: block;
+  width: 100%;          /* line length */
+  height: 1px;           /* line thickness */
+  background: rgb(255, 255, 255);
+}
 
 
 /*MYSTORY*/
 
 
-.leftPane .leftDivider{
-  height: 1px;
-  background: rgba(255,255,255,0.55);
-  
-  width: 85%;
-  max-width: 520px;     /* optional: cap it */
-  align-self: center;  /* important if leftPane is flex */
-  box-sizing: border-box;                      /* above overlay */
-}
 
 .leftPane .myStory{
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 70px;
+  padding-right: 80px;
 }
 
 .leftPane .myStory h3{
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   letter-spacing: .08em;
-  color: rgba(255,255,255,0.95);
+  color: rgb(255, 255, 255);
 }
 
-.leftPane .myStory p{
-  margin: 0;
+.leftPane .myStory h4{
+  margin: 0 0 0px;
   text-align: left;
-  font-size: 1.5rem;
-  max-width: 50ch;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: rgba(253, 142, 175, 0.95);
+}
+
+.leftPane .myStory .firstP{
+  max-width: 500px;
+  margin: 0 0 16px;
+  text-align: justify;        /* fills both sides */
+  text-justify: inter-word;
+  font-size: 1rem;          
   line-height: 1.6;
   font-weight: 300;
   color: rgba(255,255,255,0.85);
 }
 
+.leftPane .myStory p{
+  max-width: 500px;
+  margin: 0 0 16px;
+  text-align: justify;        /* fills both sides */
+  text-justify: inter-word;
+  font-size: 1rem;          
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+}
 
+.leftPane .myStory p { text-indent: 2em; }
+.leftPane .myStory .firstP{
+  text-indent: 0;
+}
+
+.bold{
+  color: rgb(255, 255, 255);
+  font-weight: 1000;
+}
 
 /*RIGHTPANE*/
 
@@ -542,6 +615,10 @@ main{
   padding-top: 100px;
   padding-right: 180px;
   margin: 0;
+}
+.rightPane .bold2{
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 .rightPane .box .nameLine{
@@ -553,7 +630,7 @@ main{
 }
 
 .rightPane .box p{
-  font-size: 1rem;
+  font-size: .85rem;
   margin: 4px 0 0;           /* kills paragraph top margin */
   text-align: right;
   padding-top: 0px;
@@ -794,6 +871,70 @@ main{
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
+}
+
+
+
+
+
+
+
+
+
+/*PROJECTS*/
+.grid{
+  display: grid;
+  box-sizing: border-box;  
+  padding: 0 24px;   
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+
+
+/* responsive: 2 columns on medium, 1 column on small */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* button that contains image */
+.thumbBtn{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.thumbBtn img{
+  width: 96px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbBtn span{
+  text-align: left;
+}
+
+/* hover effect */
+.thumbBtn:hover{
+  transform: translateY(-2px);
 }
 
 

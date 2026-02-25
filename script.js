@@ -62,4 +62,17 @@ window.addEventListener("keydown", (e) => {
 
 
 
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-open]");
+  if(!btn) return;
+
+  const card = btn.closest("[data-project]");
+  const title = card?.dataset.title;
+  const desc = card?.dataset.desc;
+
+  // replace this with your modal / panel logic
+  alert(`${title}\n\n${desc}`);
+});
+
+
 
