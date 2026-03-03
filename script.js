@@ -63,16 +63,27 @@ window.addEventListener("keydown", (e) => {
 
 
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-open]");
-  if(!btn) return;
+  // 1) Navigate if the clicked element (or its parent) has a data-href
+  const linkBtn = e.target.closest("[data-href]");
+  if (linkBtn) {
+    const href = linkBtn.dataset.href;
+    if (href) window.location.href = href;
+    return; // IMPORTANT: stop here so it won't also open the modal
+  }
 
-  const card = btn.closest("[data-project]");
-  const title = card?.dataset.title;
-  const desc = card?.dataset.desc;
+  // 2) Otherwise, open modal if the clicked element has data-open
+  const openBtn = e.target.closest("[data-open]");
+  if (!openBtn) return;
+
+  const card = openBtn.closest("[data-project]");
+  const title = card?.dataset.title || "";
+  const desc  = card?.dataset.desc  || "";
 
   // replace this with your modal / panel logic
   alert(`${title}\n\n${desc}`);
 });
+
+
 
 
 

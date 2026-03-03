@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body id="top">
   <header class="header">
     <div class="container row">
       <a class="brand" href="index.html">Your Name</a>
@@ -19,90 +22,139 @@
       <nav class="nav" id="nav">
         <a href="index.html" data-nav>Home</a>
         <a href="projects.html" data-nav>Projects</a>
-        <a href="cv.html" data-nav>CV</a>
         <a href="about.html" data-nav>About</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <h1>Projects</h1>
+    <div id="top"></div>
+    <h1 class = "projectsTitle"> 
+      <span class="tMain"><span class="bigP">P</span>ROJECTS</span>
+      <span class="tSub">SINCE 2022</span>
+    </h1>
     <div class="grid">
-      <article class="card" data-project data-title="Project 1" data-desc="Short description for Project 1.">
-         <h2>Project 1</h2>
-         <p class="muted">One line summary.</p>
+       <!--PROJECT1-->
+       <button class="card projectCard" type="button"
+                data-project
+                data-href="characters.html"
+                data-title="Project 1"
+                data-project data-title="Project 1" data-desc="..."
+                style="--bg: url('assets/project/Character.png');">
+            <div class="cardContent">
+             <h2>CHARACTER</h2>
+             <p class="muted">THIS is the Character project form all the project that I did. basically for different project and different design.</p>
+            </div>
+      </button>
 
-        <button class="thumbBtn btn ghost" type="button" data-open>
-          <img src="assets/projects/p1.jpg" alt="Project 1 thumbnail" loading="lazy">
-          <span>Details</span>
-        </button>
-      </article>
+      <!--PROJECT2-->
+      <button class="card projectCard" type="button"
+              data-project
+              data-href="craft.html"
+              data-title="Project 2"
+              data-project data-title="Project 2" data-desc="..."
+              style="--bg: url('assets/project/Craft.jpg');">
+             <div class="cardContent">
+             <h2>CRAFT</h2>
+             <p class="muted">THIS is the Character project form all the project that I did. basically for different project and different design.</p>
+            </div>
+      </button>
 
-      <article class="card" data-project data-title="Project 2" data-desc="Short description for Project 2.">
-         <h2>Project 2</h2>
-          <p class="muted">One line summary.</p>
+      <!--PROJECT3-->
+      <button class="card projectCard" type="button"
+              data-project
+              data-href="architecture.html"
+              data-title="Project 3"
+              data-project data-title="Project 3" data-desc="..."
+              style="--bg: url('assets/project/ARCHITECTURE.png');">
+            <div class="cardContent">
+             <h2 class="h2-arch"> ARCHITECTURE</h2>
+             <p class="muted">THIS is the Character project form all the project that I did. basically for different project and different design.</p>
+            </div>
+      </button>
 
-        <button class="thumbBtn btn ghost" type="button" data-open>
-          <img src="assets/projects/p2.jpg" alt="Project 2 thumbnail" loading="lazy">
-          <span>Details</span>
-        </button>
-      </article>
+      <!--PROJECT4-->
+      <button class="card projectCard" type="button"
+              data-project
+              data-href="ai.html"
+              data-title="Project 4"
+              data-project data-title="Project 4" data-desc="..."
+              style="--bg: url('assets/project/AI.png');">
+            <div class="cardContent">
+             <h2>A.I</h2>
+             <p class="muted">THIS is the Character project form all the project that I did. basically for different project and different design.</p>
+            </div>
+      </button>
 
-      <article class="card" data-project data-title="Project 3" data-desc="Short description for Project 3.">
-          <h2>Project 3</h2>
-           <p class="muted">One line summary.</p>
-
-          <button class="thumbBtn btn ghost" type="button" data-open>
-            <img src="assets/projects/p3.jpg" alt="Project 3 thumbnail" loading="lazy">
-           <span>Details</span>
-          </button>
-      </article>
-
-      <article class="card" data-project data-title="Project 4" data-desc="Short description for Project 4.">
-          <h2>Project 4</h2>
-           <p class="muted">One line summary.</p>
-
-           <button class="thumbBtn btn ghost" type="button" data-open>
-           <img src="assets/projects/p4.jpg" alt="Project 4 thumbnail" loading="lazy">
-           <span>Details</span>
-           </button>
-      </article>
-
-      <article class="card" data-project data-title="Project 5" data-desc="Short description for Project 5.">
-         <h2>Project 5</h2>
-            <p class="muted">One line summary.</p>
-          <button class="thumbBtn btn ghost" type="button" data-open>
-            <img src="assets/projects/p5.jpg" alt="Project 5 thumbnail" loading="lazy">
-            <span>Details</span>
-          </button>
-      </article>
-
-      <article class="card" data-project data-title="Project 6" data-desc="Short description for Project 6.">
-          <h2>Project 6</h2>
-          <p class="muted">One line summary.</p>
-
-          <button class="thumbBtn btn ghost" type="button" data-open>
-           <img src="assets/projects/p6.jpg" alt="Project 6 thumbnail" loading="lazy">
-           <span>Details</span>
-          </button>
-      </article>
+      <!--PROJECT5-->
+      <button class="card projectCard" type="button"
+             data-project
+              data-href="treat.html"
+              data-title="Project 5"
+              data-project data-title="Project 5" data-desc="..."
+              style="--bg: url('assets/project/Treat.png');">
+            <div class="cardContent">
+             <h2>TREAT</h2>
+             <p class="muted">THIS is the Character project form all the project that I did. basically for different project and different design.</p>
+            </div>
+      </button>
     </div>
-  </main>
 
-  <!-- Simple modal -->
-  <div class="modal" hidden data-modal>
-    <div class="backdrop" data-close></div>
-    <div class="panel" role="dialog" aria-modal="true">
-      <button class="x" type="button" data-close aria-label="Close">✕</button>
-      <h3 id="mTitle">Title</h3>
-      <p id="mDesc" class="muted">Description</p>
-    </div>
+    <h1 class = "lineQuote"> 
+    WE ARE ALL STORIES IN THE END
+    </h1>
+
+<section class="photoMosaic">
+
+  <!-- Row 1: 3 photos (710 / 535 / 535) -->
+  <div class="photoRow r3">
+    <figure class="tile w710"><img src="assets/photos/architecture_01.png" alt="Photo 1"></figure>
+    <figure class="tile w535"><img src="assets/photos/architecture_03.png" alt="Photo 2"></figure>
+    <figure class="tile w535"><img src="assets/photos/joshuatree.png" alt="Photo 3"></figure>
   </div>
 
-  <footer class="footer">
-    <div class="container row">
-      <span>© <span data-year></span> Your Name</span>
-      <a href="#top">Top</a>
+  <!-- Row 2: 2 photos (520 / 1280) -->
+  <div class="photoRow r2">
+    <figure class="tile w520"><img src="assets/photos/flamingo.png" alt="Photo 4"></figure>
+    <figure class="tile w1280"><img src="assets/photos/sichuan.png" alt="Photo 5"></figure>
+  </div>
+
+  <!-- Row 3: 3 photos (710 / 535 / 535) -->
+  <div class="photoRow r3">
+    <figure class="tile w710"><img src="assets/photos/joshuatree_02.png" alt="Photo 6"></figure>
+    <figure class="tile w535"><img src="assets/photos/japan.png" alt="Photo 7"></figure>
+    <figure class="tile w535"><img src="assets/photos/mammoth_01.png" alt="Photo 8"></figure>
+  </div>
+
+</section>
+
+ <h1 class = "lineQuote"> 
+    TO BE CONTINUE...
+ </h1>
+
+
+</main>
+
+
+  <!-- Simple modal -->
+
+ <footer class="footer">
+    <div class="container footerRow">
+      <span class="footerLeft">© <span data-year></span> Zhengda.com</span>
+
+      <a class="footerEmail" href="mailto:LIU.4248@GMAIL.COM">LIU.4248@GMAIL.COM</a>
+
+      <div class="footerRight">
+        <a class="iconLink" href="https://instagram.com/YOURHANDLE" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/icons/instagram.png" alt="Instagram" />
+        </a>
+        <a class="iconLink" href="https://www.artstation.com/YOURHANDLE" target="_blank" rel="noopener" aria-label="ArtStation">
+          <img src="assets/icons/artstation.png" alt="ArtStation" />
+        </a>
+        <a class="iconLink" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="assets/icons/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
     </div>
   </footer>
 </body>

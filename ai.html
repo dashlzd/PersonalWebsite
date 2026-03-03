@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture Projects</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="projectsPage">
+ <header class="header">
+    <div class="container row">
+      <a class="brand" href="index.html">Zhengda Liu</a>
+
+      <button class="navBtn" type="button" aria-expanded="false" aria-controls="nav">
+        ☰
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="index.html" data-nav>Home</a>
+        <a href="projects.html" data-nav class="active">Projects</a>
+        <a href="about.html" data-nav>About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="projectsMain">
+     <section class="categoryHero categoryNav">
+      <a class="catBtn" href="characters.html">CHARACTERS</a>
+      <a class="catBtn" href="craft.html">CRAFT</a>
+      <a class="catBtn" href="architecture.html">ARCHITECTURE</a>
+      <a class="catBtn isActive" href="ai.html">A.I</a>
+      <a class="catBtn" href="treat.html">TREAT</a>
+     </section>
+
+    <!-- Project 01 -->
+    <article class="projectCard2">
+      <div class="projectMeta">
+        <h2>Project Title 01</h2>
+        <p class="projectDesc">
+          Short description goes here. What it is, why it matters, what you did.
+        </p>
+
+        <ul class="projectTags">
+          <li>2025</li>
+          <li>Unreal</li>
+          <li>Visualization</li>
+        </ul>
+      </div>
+
+      <div class="projectMedia">
+        <img src="assets/img/arch_01.jpg" alt="Project 01 image" loading="lazy" />
+
+        <!-- optional video -->
+        <div class="videoWrap">
+          <video controls playsinline preload="metadata">
+            <source src="assets/video/arch_01.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 02 -->
+    <article class="projectCard2">
+      <div class="projectMeta">
+        <h2>Project Title 02</h2>
+        <p class="projectDesc">Another description…</p>
+        <ul class="projectTags">
+          <li>Studio</li><li>Rendering</li><li>Diagram</li>
+        </ul>
+      </div>
+
+      <div class="projectMedia">
+        <div class="imgGrid">
+          <img src="assets/img/arch_02a.jpg" alt="Project 02 image A" loading="lazy" />
+          <img src="assets/img/arch_02b.jpg" alt="Project 02 image B" loading="lazy" />
+        </div>
+
+        <!-- optional embed (YouTube/Vimeo) -->
+        <div class="videoWrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="Project video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </article>
+  </main>
+
+ <footer class="footer">
+    <div class="container footerRow">
+      <span class="footerLeft">© <span data-year></span> Zhengda.com</span>
+
+      <a class="footerEmail" href="mailto:LIU.4248@GMAIL.COM">LIU.4248@GMAIL.COM</a>
+
+      <div class="footerRight">
+        <a class="iconLink" href="https://instagram.com/YOURHANDLE" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/icons/instagram.png" alt="Instagram" />
+        </a>
+        <a class="iconLink" href="https://www.artstation.com/YOURHANDLE" target="_blank" rel="noopener" aria-label="ArtStation">
+          <img src="assets/icons/artstation.png" alt="ArtStation" />
+        </a>
+        <a class="iconLink" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="assets/icons/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
