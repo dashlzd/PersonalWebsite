@@ -1448,10 +1448,555 @@ letter-spacing: 0em;  }
 
 
 /*CHARACTER*/
+/*PROJECT_01*/
+/*CHARACTER_01*/
+.chLayout-01{
+  width: 100%;
+  max-width: 980px;
+  max-height:1040px;
+  margin: 20px 0 20px;
+  display: grid;
+  grid-template-columns: 59.6939% minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.chLayout-01 .imgLeft{
+  width: 100%;
+  height: 1040px;
+  object-fit: cover;
+  display: block;
+}
+
+.chLayout-01 .rightCol{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chLayout-01 .imgRight{
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.chLayout-01 .projectDesc{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;           /* helps justification look better */
+  line-height: 1.7;
+}
+
+/*CHARACTER_02*/
+.chLayout-02{
+  width: 100%;
+  max-width: 980px;
+  max-height:1040px;
+  margin: 20px 0 20px;                /* center the whole frame */
+  display: grid;
+  grid-template-columns: 38.7755% minmax(0, 1fr); /* exact columns */
+  gap: 10px;
+  align-items: start;
+  box-sizing: border-box;
+
+}
+
+/* left column stack: small image + text */
+.chLayout-02 .leftCol{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* left small image */
+.chLayout-02 .imgLeft{
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+/* text under left image */
+.chLayout-02 .projectDesc{
+  margin: 12px 0 0;
+  width: 100%;            /* match the small image */
+  max-width: none;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.7;
+}
+
+.chLayout-02 .imgRight{
+  width: 100%;
+  height: 1040px;
+  object-fit: cover;
+  display: block;
+}
+
+/*CHARACTER_03*/
+.chLayout-03{
+  width: 100%;
+  max-width: 980px;
+  max-height:1040px;
+  margin: 20px 0 20px;
+  display: grid;
+  grid-template-columns: 59.6939% minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.chLayout-03 .imgLeft{
+  width: 100%;
+  height: 1040px;
+  object-fit: cover;
+  display: block;
+}
+
+.chLayout-03 .rightCol{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chLayout-03 .imgRight{
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.chLayout-03 .projectDesc{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;           /* helps justification look better */
+  line-height: 1.7;
+}
 
 
+/*CHARACTER_04*/
+.chLayout-04{
+  width: 100%;
+  max-width: 980px;
+  margin: 20px 0 20px;
+  display: grid;
+  grid-template-columns: 59.6939% minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.chLayout-04{
+  width: 100%;
+  max-width: 980px;
+  max-height:1040px;
+  margin: 20px 0 20px;                /* center the whole frame */
+  display: grid;
+  grid-template-columns: 38.7755% minmax(0, 1fr); /* exact columns */
+  gap: 10px;
+  align-items: start;
+  box-sizing: border-box;
+
+}
+
+/* left column stack: small image + text */
+.chLayout-04 .leftCol{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* left small image */
+.chLayout-04 .imgLeft{
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+/* text under left image */
+.chLayout-04 .projectDesc{
+  margin: 12px 0 0;
+  width: 100%;            /* match the small image */
+  max-width: none;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.7;
+}
+
+.chLayout-04 .imgRight{
+  width: 100%;
+  height: 1040px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+/* right large image */
 /*CRAFT*/
+/*PROJECT_01*/
+.ProjectCard{
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 980px;
+  margin: 18px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  /* baseline (important for smooth un-hover) */
+  transform: translateY(0);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.05) inset;
+
+  /* smooth both directions */
+  transition:
+    transform 750ms cubic-bezier(.16, 1, .3, 1),
+    box-shadow 1200ms cubic-bezier(.16, 1, .3, 1),
+    border-color 1000ms cubic-bezier(.16, 1, .3, 1);
+  will-change: transform, box-shadow;
+
+
+  /* decoration */
+  padding: clamp(18px, 2.2vw, 28px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(5, 5, 5, 0.295);
+  box-shadow:
+    0 0 30px  rgba(0,0,0,0.45),
+    0 0 5px rgba(255,255,255,0.05) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* subtle glow on hover */
+.ProjectCard:hover{
+  border-color: rgba(124,92,255,0.45);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.55),
+    0 0 25px  rgba(124,92,255,0.18) inset,
+    0 0 20px rgba(124,92,255,0.20);
+  transform: translateY(-0px);
+
+}
+
+/* optional: a thin gradient “top edge” highlight */
+.ProjectCard::before{
+  content:"";
+  width: 100%;
+  height: 1px;
+  display: block;
+  margin-bottom: 14px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124,92,255,0.55),
+    rgba(204,73,149,0.45),
+    transparent
+  );
+  opacity: .9;
+}
+
+.ProjectCard::after{
+  content:"";
+  width: 100%;
+  height: 1px;
+  display: block;
+  margin-bottom: 14px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124,92,255,0.55),
+    rgba(204,73,149,0.45),
+    transparent
+  );
+  opacity: .9;
+}
+
+
+.ProjectCard .projectMeta{
+  width: 100%;
+  max-width: 980px;            /* readable text width */
+  margin: 0 auto;              /* center text block */
+  text-align: left;   /* uncomment if you want centered text */
+}
+
+.ProjectCard .projectHead{
+  padding: 20px 0 0;
+  font-size: 2rem;
+  letter-spacing: .04em;
+  line-height: 1.15;
+}
+
+.ProjectCard .projectDesc{
+  padding: 20px 0 20px;
+  max-width:100%;
+  text-align: left;
+}
+
+.ProjectCard .projectMeta .craftImageWrap-01-01 img{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto; /* center */
+}
+
+.ProjectCard .projectMeta .craftImageWrap-01-02{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 505;   /* correct: width / height */
+  overflow: hidden;
+}
+
+.ProjectCard .projectMeta .craftImageWrap-01-02 > img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* each tile width = 320/980 = 32.6531% */
+.ProjectCard .projectMeta .craftImageWrap-01-02 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 32.6531%;
+  height: 100%;
+}
+
+/* left = (320+10)/980 = 33.6735% */
+.ProjectCard .projectMeta .craftImageWrap-01-02 > img:nth-child(2){
+  left: 33.6735%;
+  top: 0%;
+  width: 32.6531%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 0%; /* smaller % shows more TOP (moves image "up") */
+  transform: none;             /* important */
+}
+
+/* left = (320+10+320+10)/980 = 67.3469% */
+.ProjectCard .projectMeta .craftImageWrap-01-02 > img:nth-child(3){
+  left: 67.3469%;
+  top: 0%;
+  width: 32.6531%;
+  height: 100%;
+}
+
+/*PROJECT_02*/
+
+.craftImageWrap-02-01{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  height: 480px;          /* your target height */
+  overflow: hidden;
+}
+
+.craftImageWrap-02-01 > img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Row: 640 - 10 - 330, height 480 ---------- */
+.craftImageWrap-02-01 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 65.3061%;   /* 640/980 */
+}
+
+.craftImageWrap-02-01 > img:nth-child(2){
+  left: 66.3265%;    /* (640+10)/980 */
+  top: 0%;
+  width: 33.6735%;   /* 330/980 */
+
+  object-position: center 0%; /* optional */
+  transform: none;
+}
+
+
+/*PROJECT_03*/
+
+.craftImageWrap-03-01{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  height: 850px;          /* your target height */
+  overflow: hidden;
+}
+
+.craftImageWrap-03-01 > img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Row: 485 - 10 - 485, height 980 ---------- */
+.craftImageWrap-03-01 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 49.4897%;   /* 485/980 */
+}
+
+.craftImageWrap-03-01 > img:nth-child(2){
+  left: 50.5102%;    /* (485+10)/980 */
+  top: 0%;
+  width: 49.4897%;   /* 330/980 */
+
+  object-position: center 0%; /* optional */
+  transform: none;
+}
+
+.craftImageWrap-03-02{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  height: 1165px;          /* your target height */
+  overflow: hidden;
+}
+
+.craftImageWrap-03-02 > img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Row: 485 - 10 - 485, height 980 ---------- */
+.craftImageWrap-03-02 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 100%;   /* 980/980 */
+  height: 43.7768% ;   /* 510/1165 */
+  
+}
+
+.craftImageWrap-03-02 > img:nth-child(2){
+  left: 0%;    /* 0/980 */
+  top: 44.6352%;      /*（510+10)/1165*/
+  width: 24.2347%;   /* 237.5/980 */
+  height: 35.6223% ;  /* 415/1165 */
+
+}
+
+.craftImageWrap-03-02 > img:nth-child(3){
+  left: 25.2551%;    /* （237.5+10)/980 */
+  top: 44.6352%;      /*（510+10)/1165*/
+  width: 24.2347%;   /* 237.5/980 */
+  height: 35.6223% ;  /* 415/1165 */
+
+
+}
+
+.craftImageWrap-03-02 > img:nth-child(4){
+  left: 50.5102%;    /* （237.5+10+237.5+10)/980 */
+  top: 44.6352%;      /*（510+10)/1165*/
+  width: 24.2347%;   /* 237.5/980 */
+  height: 35.6223% ;  /* 415/1165 */
+}
+
+.craftImageWrap-03-02 > img:nth-child(5){
+  left: 75.7653%;    /* （237.5+10+237.5+10+237.5+10)/980 */
+  top: 44.6352%;      /*（510+10)/1165*/
+  width: 24.2347%;   /* 237.5/980 */
+  height: 35.6223% ;  /* 415/1165 */
+}
+
+.craftImageWrap-03-02 > img:nth-child(6){
+  left: 0%;    /* 0/980 */
+  top: 81.1159%;           /* (510+10+415+10)/1165 */
+  width: 100%;   /* 980/980 */
+  height: 18.8841% ;   /* 220/1165 */
+
+  object-position: center 65%;  /* smaller % = show more TOP */
+}
+
+
+/*PROJECT_04*/
+.craftImageWrap-04-01{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  height: 1185px;          /* your target height */
+  overflow: hidden;
+}
+
+.craftImageWrap-04-01 > img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Row: 485 - 10 - 485, height 375 ---------- */
+.craftImageWrap-04-01 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 49.4898%;   /* 485/980 */
+  height: 31.6456% ;   /* 375/1185 */
+  
+}
+
+.craftImageWrap-04-01 > img:nth-child(2){
+  left: 50.5102%;    /* （485 + 10）/980 */
+  top: 0%;      /*（375+10)/1185*/
+  width: 49.4898%;   /* 485/980 */
+  height: 31.6456%;  /* 375/1185 */
+
+}
+
+.craftImageWrap-04-01 > img:nth-child(3){
+  left: 0%;            /* 0/980 */
+  top: 32.4895%;      /*（375+10)/1185*/
+  width: 100%;   /* 980/980 */
+  height: 37.9747% ;  /* 450/1185 */
+
+}
+
+.craftImageWrap-04-01 > img:nth-child(4){
+  left: 0%;           /* 0/980 */
+  top: 71.3080%;      /*（375+10+450+10)/1185*/
+  width: 32.6531%;   /* 320/980 */
+  height: 28.6920% ;  /* 340/1185 */
+}
+
+.craftImageWrap-04-01 > img:nth-child(5){
+  left: 33.6735%;    /* （320+10）/980 */
+  top: 71.3080%;     /*（375+10+450+10)/1185*/
+  width: 32.6531%;   /* 320/980 */
+  height: 28.6920% ;  /* 340/1185 */
+}
+
+.craftImageWrap-04-01 > img:nth-child(6){
+  left: 67.3269%;    /* （320+10+320+10）/980 */
+  top: 71.3080%;      /*（375+10+450+10)/1185*/
+  width: 32.6531%;   /* 320/980 */
+  height: 28.6920% ;  /* 340/1185 */
+}
 
 /*ARCHITECTURE*/
 /*PROJECT_01*/
@@ -1852,10 +2397,414 @@ letter-spacing: 0em;  }
   object-position: center 65%; /* smaller % shows more TOP (moves image "up") */
   transform: none;             /* important */
 }
-/*A.I*/
 
+
+/*PROJECT_04*/
+.architectureProjectCard-04{
+  width: 100%;
+  max-width: 980px;
+  margin: 18px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* baseline (important for smooth un-hover) */
+  transform: translateY(0);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.05) inset;
+
+  /* smooth both directions */
+  transition:
+    transform 750ms cubic-bezier(.16, 1, .3, 1),
+    box-shadow 1200ms cubic-bezier(.16, 1, .3, 1),
+    border-color 1000ms cubic-bezier(.16, 1, .3, 1);
+  will-change: transform, box-shadow;
+
+
+  /* decoration */
+  padding: clamp(18px, 2.2vw, 28px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(5, 5, 5, 0.295);
+  box-shadow:
+    0 0 30px  rgba(0,0,0,0.45),
+    0 0 5px rgba(255,255,255,0.05) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* subtle glow on hover */
+.architectureProjectCard-04:hover{
+  border-color: rgba(124,92,255,0.45);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.55),
+    0 0 25px  rgba(124,92,255,0.18) inset,
+    0 0 20px rgba(124,92,255,0.20);
+  transform: translateY(-0px);
+
+}
+
+/* optional: a thin gradient “top edge” highlight */
+.architectureProjectCard-04::before{
+  content:"";
+  width: 100%;
+  height: 1px;
+  display: block;
+  margin-bottom: 14px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124,92,255,0.55),
+    rgba(204,73,149,0.45),
+    transparent
+  );
+  opacity: .9;
+}
+
+.architectureProjectCard-04 .projectMeta{
+  width: 100%;
+  max-width: 980px;            /* readable text width */
+  margin: 0 auto;              /* center text block */
+  text-align: left;   /* uncomment if you want centered text */
+}
+
+.architectureProjectCard-04 .projectHead{
+  padding: 20px 0 0;
+  font-size: 2rem;
+  letter-spacing: .04em;
+  line-height: 1.15;
+}
+
+.architectureProjectCard-04 .projectDesc{
+  padding: 20px 0 20px;
+  max-width:100%;
+  text-align: left;
+}
+
+.architectureProjectCard-04 .projectMeta .imageWrap-01 img{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+
+}
+
+
+/* wrapper MUST define the ratio for % positioning to be correct */
+.architectureProjectCard-04 .projectMeta .imageWrap-02{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 1000;   /* 280 +10 +390 +10 +310 = 1000 */
+  overflow: hidden;
+}
+
+/* base image behavior */
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Row 1: 485 - 10 - 485, height 280 ---------- */
+/* height = 280/1000 = 28% */
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 49.4898%;    /* 485/980 */
+  height: 28%;        /* 280/1000 */
+}
+
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(2){
+  left: 50.5102%;     /* (485+10)/980 */
+  top: 0%;
+  width: 49.4898%;
+  height: 28%;
+}
+
+/* ---------- Row 2: full width, height 390 ---------- */
+/* top = (280+10)/1000 = 29% ; height = 390/1000 = 39% */
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(3){
+  left: 0%;
+  top: 29%;
+  width: 100%;
+  height: 39%;
+}
+
+/* ---------- Row 3: 600 - 10 - 180 - 10 - 180, height 310 ---------- */
+/* top = (280+10+390+10)/1000 = 69% ; height = 310/1000 = 31% */
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(4){
+  left: 0%;
+  top: 69%;
+  width: 61.2245%;    /* 600/980 */
+  height: 31%;
+}
+
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(5){
+  left: 62.2449%;     /* (600+10)/980 */
+  top: 69%;
+  width: 18.3673%;    /* 180/980 */
+  height: 31%;
+}
+
+.architectureProjectCard-04 .projectMeta .imageWrap-02 > img:nth-child(6){
+  left: 81.6327%;     /* (600+10+180+10)/980 */
+  top: 69%;
+  width: 18.3673%;
+  height: 31%;
+
+  /* optional: pan inside the frame */
+  object-position: center 65%;
+}
+/*A.I*/
+/*PROJECT_01*/
+.aiImageWrap-01-01{
+  width: 100%;
+  overflow: hidden; /* optional */
+}
+
+.aiImageWrap-01-01 > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* keeps proportion, no crop */
+  object-position: center;
+}
+
+
+/*PROJECT_01*/
+.aiImageWrap-01-01{
+  width: 100%;
+  overflow: hidden; /* optional */
+}
+
+.aiImageWrap-01-01 > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* keeps proportion, no crop */
+  object-position: center;
+}
+
+/*PROJECT_02*/
+.aiImageWrap-02-01{
+  width: 100%;
+  overflow: hidden; /* optional */
+}
+
+.aiImageWrap-02-01 > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* keeps proportion, no crop */
+  object-position: center;
+}
+
+.aiImageWrap-02-02{
+  width: 100%;
+  display: grid;
+  margin-bottom: 10px;
+
+  grid-template-columns: 57.1429% 1fr;       /* left fixed ratio, right fills */
+           
+  align-items: stretch;                         /* top align */
+  /* keep frame scaling */
+  aspect-ratio: 980 / 530;
+}
+
+.aiImageWrap-02-02 > img{
+  width: 100%;
+  height: auto;              /* ✅ no zoom, keeps ratio */
+  object-fit: contain;
+  display: block;
+}
+
+.aiImageWrap-02-02 > .projectDesc{
+  margin-left: 10px;
+  margin-bottom: 0px;
+  padding: 0;
+  width: 97.6190%;
+  max-width: none;
+  justify-self: stretch;
+
+  display: flex;
+  align-items:flex-end;
+  text-align: justify;      /* ✅ flush left & right */
+  text-justify: inter-word;
+  line-height: 1.7;
+}
+
+
+.aiImageWrap-02-03{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 990;   /* 490 +10 +490 = 990 */
+  overflow: hidden;
+}
+
+.aiImageWrap-02-03 > img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Row: 980, height 490 ---------- */
+.aiImageWrap-02-03 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 100%;   /* 980/980 */
+  height: 49.4949% ;   /* 490/990 */
+  
+}
+
+.aiImageWrap-02-03 > img:nth-child(2){
+  left: 0%;
+  top: 50.5050%;
+  width: 100%;   /* 980/980 */
+  height: 49.4949% ;   /* 490/990 */
+  
+}
+
+.aiImageWrap-02-04{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 940;   /* 490 +10 +490 = 990 */
+  overflow: hidden;
+}
+
+.aiImageWrap-02-04 > img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Row: 485 -10 485, height 630 ---------- */
+.aiImageWrap-02-04 > img:nth-child(1){
+  left: 0%;
+  top: 0%;
+  width: 49.4898%;   /* 485/980 */
+  height: 67.0213% ;   /* 630/940 */
+  
+}
+
+.aiImageWrap-02-04 > img:nth-child(2){
+  left: 50.5102%;
+  top: 0%;
+  width: 49.4898%;    /* 485/980 */
+  height: 67.0213% ;    /* 630/940 */
+  
+}
+
+.aiImageWrap-02-04 > img:nth-child(3){
+  left: 0%;
+  top: 68.0851%;  /* (640+10)/940 */
+  width: 100%;   /* 980/980 */
+  height: 31.9149% ;   /* 490/940 */
+  
+  object-position: center 25%;
+
+}
+
+.aiImageWrap-02-05{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 630;   /* 490 +10 +490 = 990 */
+  overflow: hidden;
+}
+
+.aiImageWrap-02-05 > img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Row: 320 -10 - 320, height 630 ---------- */
+.aiImageWrap-02-05 > img:nth-child(1){
+  left: 0%;           /* 0/980 */
+  top: 0%;
+  width: 32.6531%;   /* 320/980 */
+  height: 100% ;   /* 980/980 */
+  
+}
+
+.aiImageWrap-02-05 > img:nth-child(2){
+  left: 33.6735%;           /* 320 + 10 /980 */
+  top: 0%;
+  width: 32.6531%;   /* 320/980 */
+  height: 100% ;   /* 980/980 */
+  
+}
+
+.aiImageWrap-02-05 > img:nth-child(3){
+  left: 67.3469%;           /* 320 + 10 +320 +10 /980 */
+  top: 0%;
+  width: 32.6531%;   /* 320/980 */
+  height: 100% ;   /* 980/980 */
+
+}
 
 /*TREAT*/
+.treatLayout{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+
+  aspect-ratio: 980 / 880;   /* 490 +10 +490 = 990 */
+  overflow: hidden;
+}
+
+.treatLayout> img{
+  position: absolute;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Row: 980, height 550 ---------- */
+.treatLayout > img:nth-child(1){
+  left: 0%;          
+  top: 0%;
+  width: 100%;   /* 980/980 */
+  height: 100% ;   /* 880/880 */
+}
+
+.treatLayout > img:nth-child(2){
+
+  left: 0%;        
+  top: 63.6363%;
+  width: 32.6531%;   /* 320/980 */
+  height: 36.3636% ;   /* 980/980 */
+}
+
+.treatLayout > img:nth-child(3){
+
+  left: 33.6734%;        
+  top: 63.6363%;
+  width: 32.6531%;   /* 320/980 */
+  height: 36.3636% ;   /* 980/980 */
+}
+.treatLayout> img:nth-child(4){
+
+  left: 67.3469%;        
+  top: 63.6363%;
+  width: 32.6531%;   /* 320/980 */
+  height: 36.3636% ;   /* 980/980 */
+
+}
 
 
 
