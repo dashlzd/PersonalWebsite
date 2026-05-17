@@ -23,14 +23,30 @@ a{ color:inherit; }
   flex: 0 0 auto;
 }
 
-.brand{ 
-  font-weight:700;
-  text-decoration:none; 
-  padding:1rem 0; 
-  margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
+.brand{
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.brandIcon{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 768px){
+  .brandIcon{ width: 65px; height: 65px; }
+  .brand .brandText{
+    display: none !important;   /* force hide */
+  }
 }
 
 .navBtn{
+  display: none;
   margin-right: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
   border:1px solid var(--border);
   background:transparent;
@@ -38,14 +54,16 @@ a{ color:inherit; }
   padding:.4rem .6rem;
   border-radius:10px;
   cursor:pointer;
+
 }
 
 .nav{
   margin-right: clamp(0px, calc(min(100vw, 1920px) * 0.02), 2rem);
-  display:none;
+  display:flex;
   gap:.9rem;
   align-items:center;
 }
+
 .nav a{
   text-decoration:none;
   padding:.3rem .5rem;
@@ -104,9 +122,23 @@ a{ color:inherit; }
 
 }
 
-@media (min-width: 800px){
-  .navBtn{ display:none; }
-  .nav{ display:flex; }
+@media (max-width: 768px){
+.nav{
+  display: flex !important;
+  gap: .05rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.85rem;      /* ✅ smaller text for all nav items */
+}
+
+/* optional: make only the links smaller (more precise) */
+.nav a{
+  font-size: 0.85rem;
+}
+
+  .navBtn{
+    display: none !important;     /* hide ☰ */
+  }
 }
 
 main{
@@ -213,7 +245,7 @@ main.right .btnRow{
   z-index: 2;
 }
 
-main.right .box{
+.home-wrap .box{
   width: min(520px, 100%);
   padding-top: 6rem; /* top margin for top*/
   margin-left: auto;   /* push to the far right */
@@ -221,25 +253,20 @@ main.right .box{
   text-align: right; 
 }
 
-main.right .box h1{
+.home-wrap .box h1{
   font-size: 4rem;  
   margin: 0;           /* kills all h1 margins */
   padding: 0;          /* kills the h1 padding from your global rule */
   line-height: 1;      /* tighter line box */
 }
-main.right .box p{
+.home-wrap .box p{
   margin: 0;           /* kills paragraph top margin */
   position: relative;
   left: -1.2rem;
   white-space: nowrap; /* for phone */
   font-size: 0.7rem; 
 }
-  @media (max-width: 480px){ 
-  main.right .box p{
-    font-size: 0.95rem;
-    padding-left: clamp(10px, 1.6vw, 6rem);
-  } /* for phone */
-}
+
 
 
 .btnRow .btn.ghost{
@@ -258,7 +285,7 @@ main.right .box p{
   background: color-mix(in srgb, var(--hbg) 35%, transparent);
   transform: translateX(20px) scale(1.2);
 }
-main.right .btnRow{
+.home-wrap .btnRow{
   font-size: 3rem;
   display: flex;
   flex-direction: column;
@@ -268,6 +295,23 @@ main.right .btnRow{
 
   width: fit-content;
   margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
+}
+
+@media (max-width: 768px){
+
+  /* ARCHITECTURE = soft red */
+  .btnRow .btn.ghost[href="architecture.html"]{
+    background: rgba(222, 60, 79, 0.164);     /* softer */
+    color: rgba(255,255,255,.92);
+    box-shadow: 0 0 18px rgba(222, 60, 79, 0.10); /* subtle glow */
+  }
+
+  /* ABOUT = soft blue */
+  .btnRow .btn.ghost[href="about.html"]{
+    background: rgba(112, 230, 230, 0.164);
+    color: rgba(255,255,255,.92);
+    box-shadow: 0 0 18px rgba(112, 230, 230, 0.055);
+  }
 }
 
 main.right .btnRow .btn{
@@ -311,6 +355,55 @@ main.right{ outline: 0px solid cyan; }
   display: flex;
   justify-content: center;   /* centers the inner row block */
   flex: 0 0 auto;
+}
+
+@media (max-width: 480px){ 
+
+.home-wrap .box{
+  width: min(520px, 100%);
+  padding-top: 3rem; /* top margin for top*/
+  margin-left: auto;   /* push to the far right */
+  margin-right: 5rem;
+  text-align: right; 
+}
+
+.home-wrap .box h1{
+  font-size: 3.3rem;  
+  margin-right: 15px;           /* kills all h1 margins */
+  padding: 0;          /* kills the h1 padding from your global rule */
+  line-height: 1;      /* tighter line box */
+}
+.home-wrap .box p{
+  margin-right: 13px;           /* kills paragraph top margin */
+  position: relative;
+  left: -1.2rem;
+  white-space: nowrap; /* for phone */
+  font-size: 0.5rem; 
+}
+
+.home-wrap .btnRow{
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: flex-start;
+  margin-top: 6rem;
+
+  width: fit-content;
+  margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
+}
+
+.footer{
+  border-top: 1px solid var(--border);
+  padding:  3px;
+  color: var(--muted);
+  min-height: 30px;
+  display: flex;
+  justify-content: center;   /* centers the inner row block */
+  flex: 0 0 auto;
+}
+
+    /* for phone */
 }
 
 html, body{
@@ -403,16 +496,17 @@ body{
 }
 
 /* Mobile: stack nicely */
-@media (max-width: 600px){
+@media (max-width: 480px){
   .footerRow{
     grid-template-columns: 1fr;
     align-items: center;
     text-align: center;
   }
-  .footerLeft, .footerEmail, .footerRight{
-    justify-self: center;
+  .footerLeft, .footerEmail{
+    display: none;
   }
   .footerRight{
+    justify-self: center;
     flex-wrap: wrap;
     justify-content: center;
   }
