@@ -84,6 +84,19 @@ document.addEventListener("click", (e) => {
 });
 
 
+/*About page clickable page*/
+const bioBlock = document.querySelector(".bioBlock");
+
+function setBioMode(){
+  if (!bioBlock) return;
+
+  if (window.innerWidth > 768) {
+    bioBlock.open = true; // always open on desktop
+  }
+}
+
+setBioMode();
+window.addEventListener("resize", setBioMode);
 
 
 
