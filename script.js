@@ -95,6 +95,24 @@ function setBioMode(){
   }
 }
 
+/*About resumeblock page*/
+const resumeBlock = document.querySelector(".resumeBlock");
+
+function setResumeMode(){
+  if (!resumeBlock) return;
+
+  if (window.innerWidth > 768) {
+    resumeBlock.open = true;   // browser / desktop: always open
+  } else if (!resumeBlock.dataset.mobileReady) {
+    resumeBlock.open = false;  // mobile: closed first time
+    resumeBlock.dataset.mobileReady = "true";
+  }
+}
+
+setResumeMode();
+window.addEventListener("resize", setResumeMode);
+
+
 setBioMode();
 window.addEventListener("resize", setBioMode);
 

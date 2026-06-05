@@ -1005,6 +1005,7 @@ body{
     display: block;
   }
 
+  /*make sure bioBlock show it's apperance when on browser*/
   .bioBlock > summary.bioTitle{
     width:100%;
     pointer-events: none;   /* cannot click/collapse on desktop */
@@ -1020,7 +1021,20 @@ body{
     display: grid;
     margin-top: 12px;
   }
+
+
+  /*make sure resumeBlock show it's apperance when on browser*/
+  .resumeBlock > summary.resumeTitle{
+    pointer-events: none;
+    cursor: default;
+    list-style: none;
+  }
+
+  .resumeBlock > summary.resumeTitle::-webkit-details-marker{
+    display: none;
+  }
 }
+
 
 /* mobile: stack */
 @media (max-width: 768px){
@@ -1063,7 +1077,9 @@ body{
   .rightPane .box{ order: 1; }
   .bioBlock{ order: 2; }
   .resumeBlock{ order: 3; }
-  .myStory{ order: 4; }
+  .workingBlock { order: 3; }
+  .myStory{ order: 5; }
+  .contactBlock { order: 6; }
 
 
   /* =========================
@@ -1178,6 +1194,8 @@ body{
     transition: transform .2s ease, opacity .2s ease;
   }
 
+
+
   /* closed link cards */
   .bioBlock > .linkGrid{
     display: none !important;
@@ -1223,6 +1241,54 @@ body{
   .bioBlock[open] > summary.bioTitle::before{
     transform: rotate(180deg);
     opacity: 1;
+  }
+
+
+  /* =========================
+     resumeBlock dropdown
+  ========================= */
+
+  .resumeBlock{
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 140%;
+    max-width: 140%;
+    min-width: 0;
+    box-sizing: border-box;
+    align-items:left ;
+  }
+
+  .resumeBlock > summary.resumeTitle{
+    
+    margin: 0;
+    position: relative;
+
+    padding: 15px 15px 15px;
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,0.95);
+
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .resumeBlock > summary.resumeTitle::-webkit-details-marker{
+    display: none;
+  }
+
+  .resumeBlock > summary.resumeTitle::before{
+    content: "▾";
+    position: absolute;
+    right: 16px;
+    top: 0;
+    transition: transform .2s ease;
+  }
+
+  .resumeBlock[open] > summary.resumeTitle::before{
+    transform: rotate(180deg);
   }
 
 }
