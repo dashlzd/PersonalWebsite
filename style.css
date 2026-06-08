@@ -912,6 +912,8 @@ body{
   font-weight: 700;
   letter-spacing: .06em;
   color: rgba(255,255,255,0.95);
+
+  
 }
 
 .rightPane .resumeTitle::after{
@@ -922,7 +924,9 @@ body{
   background: rgb(255, 255, 255);
 }
 
-
+.rightPane .resumeItem{
+ margin-top: 30px;
+}
 .rightPane .resumeHead{
   display: flex;
   justify-content: space-between;
@@ -930,10 +934,6 @@ body{
   flex-wrap: wrap;
 }
 
-.rightPane.resumeHead.highlight{
-  padding-left: 12px;
-  border-left: 3px solid rgba(255,255,255,0.35);
-}
 
 .rightPane .resumeRole{
   font-weight: 600;
@@ -947,7 +947,8 @@ body{
 
 
 .rightPane .resumeDesc{
-  margin: 0px 0 36px;
+  margin: 0px 0 0px;
+  padding-top: 10px;
   font-weight: 300;
   line-height: 1;
   color: rgba(255,255,255,0.80);
@@ -1020,6 +1021,8 @@ body{
   .bioBlock .linkGrid{
     display: grid;
     margin-top: 12px;
+  
+  
   }
 
 
@@ -1055,9 +1058,9 @@ body{
     max-width: 100%;
     height: auto;
   }
-  *{
+  /**{
     outline: 1px solid red;
-  }
+  }*/
 
   /* Merge left/right pane children into one mobile flow */
   .leftPane,
@@ -1205,6 +1208,7 @@ body{
    .bioBlock[open] > .linkGrid{
     display: grid !important;
     grid-template-columns: 1fr !important;
+  
     gap: 14px !important;
 
     /* wider, but still fits phone screen */
@@ -1214,13 +1218,14 @@ body{
     /* center it */
     margin-top: 12px;
     margin-left: 50%;
+    padding-right: 0px;   
     transform: translateX(-50%);
 
     box-sizing: border-box;
   }
 
   .bioBlock[open] > .linkGrid .linkCard{
-    width: 175%;
+    width: 100vw;
     max-width: calc(100vw - 24px);
     box-sizing: border-box;
 
@@ -1248,21 +1253,21 @@ body{
      resumeBlock dropdown
   ========================= */
 
-  .resumeBlock{
+  .rightPane .resumeBlock{
+    
     padding-left: 20px;
     padding-right: 20px;
-    width: 140%;
-    max-width: 140%;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
     align-items:left ;
   }
 
-  .resumeBlock > summary.resumeTitle{
+  .rightPane .resumeBlock > summary.resumeTitle{
     
     margin: 0;
     position: relative;
-
     padding: 15px 15px 15px;
     text-align: left;
     font-size: 1.4rem;
@@ -1275,23 +1280,272 @@ body{
     user-select: none;
   }
 
-  .resumeBlock > summary.resumeTitle::-webkit-details-marker{
+  .rightPane .resumeBlock > summary.resumeTitle::-webkit-details-marker{
     display: none;
   }
 
-  .resumeBlock > summary.resumeTitle::before{
+  .rightPane .resumeBlock > summary.resumeTitle::before{
     content: "▾";
     position: absolute;
     right: 16px;
-    top: 0;
-    transition: transform .2s ease;
+    top: 18px;
+
+    opacity: .75;
+    transform: rotate(0deg);
+    transition: transform .2s ease, opacity .2s ease;
   }
 
-  .resumeBlock[open] > summary.resumeTitle::before{
+    /* underline */
+  .rightPane .resumeBlock > summary.resumeTitle::after{
+    content: "";
+    display: block;
+
+    width: 100%;
+    height: 2px;
+    margin-top: 10px;
+
+    background: rgba(255,255,255,.55);
+  }
+
+  /* open state */
+  .rightPane .resumeBlock[open] > summary.resumeTitle{
+    color: rgba(255,255,255,1);
+  }
+
+  .rightPane .resumeBlock[open] > summary.resumeTitle::after{
+    background: rgba(255,255,255,1);
+  }
+
+  .rightPane .resumeBlock[open] > summary.resumeTitle::before{
     transform: rotate(180deg);
+    opacity: 1;
   }
 
+.rightPane .resumeItem{
+  margin-top:20px;
+  margin-right: 20px;
+  margin-left:15px;
 }
+
+.rightPane .resumeHead{
+  display: flex;
+  justify-content: flex-start; /* better than space-between here */
+  gap: 14px;
+  flex-wrap: wrap;
+  font-weight: 1000;
+}
+
+.rightPane .resumeRole{
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.92);
+}
+
+.rightPane .resumeTime{
+  margin-left: auto;      /* keeps it on the right */
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 450;
+  color: rgb(255,255,255);
+}
+
+
+.rightPane .resumeDesc{
+    margin: 0px 0 0px;
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(255,255,255,0.80);
+}
+
+
+/* =========================
+  workingBlock dropdown
+========================= */
+
+.rightPane .workingBlock{
+    
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items:left ;
+}
+
+.rightPane .workingBlock > summary.resumeTitle{
+    
+  margin: 0;
+  position: relative;
+  padding: 15px 15px 15px;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.95);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.rightPane .workingBlock > summary.resumeTitle::-webkit-details-marker{
+  display: none;
+  }
+
+.rightPane .workingBlock > summary.resumeTitle::before{
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 18px;
+  opacity: .75;
+  transform: rotate(0deg);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+  /* underline */
+.rightPane .workingBlock > summary.resumeTitle::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.55);
+ }
+
+  /* open state */
+.rightPane .workingBlock[open] > summary.resumeTitle{
+  color: rgba(255,255,255,1);
+ }
+
+.rightPane .workingBlock[open] > summary.resumeTitle::after{
+  background: rgba(255,255,255,1);
+}
+
+.rightPane .workingBlock[open] > summary.resumeTitle::before{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* =========================
+  myStory dropdown
+========================= */
+
+.leftPane .myStory{
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items:left ;
+}
+
+.leftPane .myStory > summary.storyTitle{
+    
+  margin: 0;
+  position: relative;
+  padding: 15px 15px 15px;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.95);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.leftPane .myStory > summary.storyTitle::-webkit-details-marker{
+  display: none;
+  }
+
+.leftPane .myStory > summary.storyTitle::before{
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 18px;
+  opacity: .75;
+  transform: rotate(0deg);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+  /* underline */
+.leftPane .myStory > summary.storyTitle::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.55);
+ }
+
+  /* open state */
+.leftPane .myStory[open] > summary.storyTitle{
+  color: rgba(255,255,255,1);
+ }
+
+.leftPane .myStory[open] > summary.storyTitle::after{
+  background: rgba(255,255,255,1);
+}
+
+.leftPane .myStory[open] > summary.storyTitle::before{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.storyText{
+  margin-left:15px;
+  margin-right:20px;
+}
+
+
+/* =========================
+  Contact information
+========================= */
+.rightPane .contactBlock{
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 5px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items:left ;
+}
+
+.rightPane .contactBlock .resumeTitle{
+  margin: 0;
+  position: relative;
+  padding: 15px 15px 15px;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.95);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.rightPane .contactRow {
+  margin-top: 5px;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.rightPane .contactBlock > .resumeTitle::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.55);
+ }
+}
+
+
 /*PROJECTS*/
 
 .projectsTitle{
