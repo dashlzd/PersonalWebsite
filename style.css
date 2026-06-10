@@ -378,7 +378,7 @@ main.right{ outline: 0px solid cyan; }
   position: relative;
   left: -1.2rem;
   white-space: nowrap; /* for phone */
-  font-size: 0.5rem; 
+  font-size: 0.6rem; 
 }
 
 .home-wrap .btnRow{
@@ -423,8 +423,6 @@ body{
   color:var(--fg);
   overflow: hidden;
 }
-
-
 
 
 
@@ -586,7 +584,7 @@ body{
   overflow-x: hidden;
   align-items: center;  
   position: relative;
-  padding: 0px 24px;
+  padding-inline: clamp(12px, 2vw, 24px); /* responsive left/right padding */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -647,6 +645,7 @@ body{
 {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .rightPane > *{
@@ -667,8 +666,8 @@ body{
 }
 
 @media (max-width: 768px){
-  .box1,
-  .btnRow{
+  .aboutPage .box1,
+  .aboutPage .btnRow{
     display: none !important;}
 }
 
@@ -701,11 +700,17 @@ body{
 /*MYSTORY*/
 
 
-
 .leftPane .myStory{
-  padding-left: 70px;
-  padding-right: 80px;
+  padding-left: clamp(3px, 3vw, 70px);
+  padding-right: clamp(3px, 3vw, 80px);
 }
+
+.leftPane .myStory .storyTitle{
+ font-size: 3rem;
+ font-weight: 700;
+ margin-bottom: 10px;
+}
+
 
 .leftPane .myStory h3{
   margin: 0 0 10px;
@@ -761,7 +766,7 @@ body{
   font-size: 3rem;
   text-align: right;
   padding-top: 100px;
-  padding-right: 180px;
+  padding-right: 100px;
   margin: 0;
 }
 .rightPane .bold2{
@@ -770,11 +775,12 @@ body{
 }
 
 .rightPane .box .nameLine{
-  width: 44%;
+  width: 50%;
   height: 1.35px;
   background: rgb(255, 255, 255);
 
-  margin: 0px 180px 0px auto; /* right padding = 180px, align right */
+
+  margin: 0px 100px 0px auto; /* right padding = 180px, align right */
 }
 
 .rightPane .box p{
@@ -782,7 +788,7 @@ body{
   margin: 4px 0 0;           /* kills paragraph top margin */
   text-align: right;
   padding-top: 0px;
-  padding-right: 180px;
+  padding-right: 100px;
   margin-left: 0;
 }
 
@@ -802,13 +808,19 @@ body{
   line-height: 1.6;
   color: rgb(255, 255, 255);
 
-  padding-right: 180px;
+  padding-right: 100px;
   padding-left: 0;
 }
 
 
 
 /*BIOGRAPHY*/
+
+.rightPane .bioBlock{
+  padding-right: 100px;
+}
+
+
 .rightPane .bioTitle{
   position: relative;
   margin: 100px 0 0 0;
@@ -822,7 +834,7 @@ body{
 .rightPane .bioTitle::after{
   content:"";
   display: block;
-  width: 83%;          /* line length */
+  width:100%;          /* line length */
   height: 1px;           /* line thickness */
   background: rgb(255, 255, 255);
 }
@@ -831,8 +843,8 @@ body{
 
 /* card-like buttons */
 .rightPane .linkGrid{
-  margin-top: 0px;
-  padding-right: 180px;          /* match your right offset */
+  margin-top: 20px;
+  padding-top: 10px;
   display: grid;
   grid-template-columns: repeat(3, minmax(140px, 1fr));
   gap: 14px;
@@ -902,9 +914,12 @@ body{
 /*EDUCATION& WORKING EXPERIENCE*/
 .rightPane .resumeBlock{
   margin-top: 0px;
-  padding-right: 180px;  /* match your right content offset */
+  padding-right: 100px;  /* match your right content offset */
 }
-
+.rightPane .workingBlock{
+  margin-top: 0px;
+  padding-right: 100px;  /* match your right content offset */
+}
 .rightPane .resumeTitle{
   text-align: left;
   margin: 100px 0 10px;
@@ -912,8 +927,6 @@ body{
   font-weight: 700;
   letter-spacing: .06em;
   color: rgba(255,255,255,0.95);
-
-  
 }
 
 .rightPane .resumeTitle::after{
@@ -957,7 +970,9 @@ body{
 
 
 /*CONTACT*/
-
+.rightPane .contactBlock{
+  padding-right: 100px;
+}
 .rightPane .contactBlock .resumeTitle{
   text-align: right;
 }
@@ -1002,14 +1017,8 @@ body{
 
 /* Desktop: always looks normal, not clickable */
 @media (min-width: 769px){
-  .bioBlock{
-    display: block;
-  }
-
-  /*make sure bioBlock show it's apperance when on browser*/
   .bioBlock > summary.bioTitle{
-    width:100%;
-    pointer-events: none;   /* cannot click/collapse on desktop */
+    pointer-events: none;
     cursor: default;
     list-style: none;
   }
@@ -1018,11 +1027,8 @@ body{
     display: none;
   }
 
-  .bioBlock .linkGrid{
+  .bioBlock > .linkGrid{
     display: grid;
-    margin-top: 12px;
-  
-  
   }
 
 
@@ -1036,8 +1042,34 @@ body{
   .resumeBlock > summary.resumeTitle::-webkit-details-marker{
     display: none;
   }
-}
 
+
+ /*make sure workingBlock show it's apperance when on browser*/
+ .workingBlock > summary.resumeTitle{
+    pointer-events: none;
+    cursor: default;
+    list-style: none;
+  }
+
+  .workingBlock > summary.resumeTitle::-webkit-details-marker{
+    display: none;
+  }
+
+/*make sure myStory show it's apperance when on browser*/
+  .myStory{
+    width: 100%;
+  }
+
+  .myStory > summary.storyTitle{
+    pointer-events: none;
+    cursor: default;
+    list-style: none;
+  }
+
+  .myStory > summary.storyTitle::-webkit-details-marker{
+    display: none;
+  }
+}
 
 /* mobile: stack */
 @media (max-width: 768px){
@@ -1071,9 +1103,25 @@ body{
 
   /* Parent becomes flex so order works */
   main.split{
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 14px;
+
+    background-image:
+    linear-gradient(
+     rgba(43, 43, 43, 0.39),
+     rgba(12, 12, 12, 0.527)
+    ),
+    url("assets/images/about-pg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-attachment: scroll; /* better for mobile */
+
+
   }
 
   /* Mobile order */
@@ -1125,12 +1173,12 @@ body{
     max-width: 100%;
 
     padding-top: 10px !important;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
 
     font-size: clamp(0.95rem, 3.6vw, 1.15rem);
     line-height: 1.6;
-    text-align: left;
+    text-align: justify;
     text-indent: 1.3rem;
 
     word-break: break-word;
@@ -1142,7 +1190,7 @@ body{
      Biography dropdown
   ========================= */
 
-  .bioBlock{
+ .rightPane .bioBlock{
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
@@ -1152,8 +1200,7 @@ body{
     align-items:left ;
   }
 
-  .bioBlock > summary.bioTitle{
-    
+ .rightPane .bioBlock > summary.bioTitle{ 
     margin: 0;
     position: relative;
 
@@ -1169,12 +1216,12 @@ body{
     user-select: none;
   }
 
-  .bioBlock > summary.bioTitle::-webkit-details-marker{
+ .rightPane .bioBlock > summary.bioTitle::-webkit-details-marker{
     display: none;
   }
 
   /* underline */
-  .bioBlock > summary.bioTitle::after{
+ .rightPane .bioBlock > summary.bioTitle::after{
     content: "";
     display: block;
 
@@ -1186,7 +1233,7 @@ body{
   }
 
   /* arrow */
-  .bioBlock > summary.bioTitle::before{
+ .rightPane .bioBlock > summary.bioTitle::before{
     content: "▾";
     position: absolute;
     right: 16px;
@@ -1200,50 +1247,50 @@ body{
 
 
   /* closed link cards */
-  .bioBlock > .linkGrid{
+ .rightPane .bioBlock > .linkGrid{
     display: none !important;
+    padding-right: 0px;
+    padding-left: 10px;
+    margin-left: 0px;
   }
 
   /* opened link cards, still mobile layout */
-   .bioBlock[open] > .linkGrid{
+ .rightPane .bioBlock[open] > .linkGrid{
     display: grid !important;
     grid-template-columns: 1fr !important;
   
     gap: 14px !important;
 
     /* wider, but still fits phone screen */
-    width: calc(100vw - 24px);
-    max-width: calc(100vw - 24px);
+    width: calc(90vw - 20px);
+    max-width: calc(90vw - 20px);
 
     /* center it */
     margin-top: 12px;
-    margin-left: 50%;
-    padding-right: 0px;   
-    transform: translateX(-50%);
-
     box-sizing: border-box;
   }
 
-  .bioBlock[open] > .linkGrid .linkCard{
-    width: 100vw;
-    max-width: calc(100vw - 24px);
+ .rightPane .bioBlock[open] > .linkGrid .linkCard{
+    width: 88vw;
+    max-width: calc(88vw - 24px);
     box-sizing: border-box;
 
     height: 100px;          /* ✅ shorter card */
     min-height: 100px;
-    padding: 14px 16px;     /* smaller padding */
+  
+    margin-left: 20px;
   }
 
   /* open state */
-  .bioBlock[open] > summary.bioTitle{
+ .rightPane.bioBlock[open] > summary.bioTitle{
     color: rgba(255,255,255,1);
   }
 
-  .bioBlock[open] > summary.bioTitle::after{
+ .rightPane .bioBlock[open] > summary.bioTitle::after{
     background: rgba(255,255,255,1);
   }
 
-  .bioBlock[open] > summary.bioTitle::before{
+ .rightPane .bioBlock[open] > summary.bioTitle::before{
     transform: rotate(180deg);
     opacity: 1;
   }
@@ -1450,6 +1497,7 @@ body{
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: .08em;
+  list-style: none;
   color: rgba(255,255,255,0.95);
   cursor: pointer;
   list-style: none;
@@ -1517,7 +1565,7 @@ body{
 .rightPane .contactBlock .resumeTitle{
   margin: 0;
   position: relative;
-  padding: 15px 15px 15px;
+  padding: 0px 15px 15px;
   text-align: left;
   font-size: 1.4rem;
   font-weight: 700;
@@ -1529,19 +1577,15 @@ body{
 }
 
 .rightPane .contactRow {
-  margin-top: 5px;
+  margin-top: 0px;
   padding-left: 15px;
   margin-bottom: 5px;
   text-align: left;
 }
 
 .rightPane .contactBlock > .resumeTitle::after{
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  margin-top: 10px;
-  background: rgba(255,255,255,.55);
+  display: none;
+  content: none;
  }
 }
 
@@ -1763,6 +1807,167 @@ letter-spacing: 0em;  }
   outline-offset: 3px;
 }
 
+.projectDots{
+  display: none;
+}
+
+@media (max-width: 768px){
+
+/*Projectspage text*/
+
+.projectsTitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;                 /* space between text and lines */
+  text-align: center;
+}
+
+.projectsTitle .tMain{
+  padding-left: 50px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-style: italic;
+  font-size: 2.4rem;
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.projectsTitle .tMain .bigP{
+  font-size: 3rem;   /* bigger than the rest of PROJECTS */
+  line-height: 1;
+  display: inline-block;
+}
+
+.projectsTitle .tSub{
+  padding-top: 30px;
+  font-size: 0.8rem;
+  color: rgba(190, 201, 42, 0.596);
+  font-weight: 320;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  margin-left: 0px;   /* space between the two */
+}
+
+.projectsTitle::before,
+.projectsTitle::after{
+  display:none;
+}
+
+  .grid{
+    --cardW: 83vw;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding-left: calc((100vw - var(--cardW)) / 2);
+    padding-right: calc((100vw - var(--cardW)) / 2);
+    padding-bottom: 18px;
+
+    scroll-padding-left: calc((100vw - var(--cardW)) / 2);
+    scroll-padding-right: calc((100vw - var(--cardW)) / 2);
+
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+  .grid::-webkit-scrollbar{
+    display: none;
+  }
+
+  .grid .projectCard{
+    flex: 0 0 var(--cardW);
+    max-width: var(--cardW);
+
+    aspect-ratio: 4 / 3;
+    height: auto;
+
+    scroll-snap-align: center;
+    border: 6px solid rgba(120, 150, 255, 0.55); /* blue-purple transparent */
+    border-radius: 12px;
+    overflow: hidden;
+
+    transform: scale(0.82);
+    opacity: 0.5;
+    transition: transform .35s ease, opacity .35s ease;
+  }
+
+  /* pull cards closer together, so side cards are visible */
+  .grid .projectCard + .projectCard{
+    margin-left: -32px;
+  }
+
+.grid .projectCard.isSelected{
+  border: 5px solid transparent;
+  border-radius: 12px;
+
+  background:
+    var(--bg) center / cover no-repeat padding-box,
+    linear-gradient(135deg,
+  rgba(8, 10, 35, 0.95) 0%,
+  rgba(55, 25, 95, 0.85) 20%,
+  rgba(138, 37, 96, 0.70) 40%,
+  rgba(95, 90, 210, 0.68) 60%,
+  rgba(30, 13, 107, 0.78) 80%,
+  rgba(5, 12, 45, 0.95) 100%
+) border-box;
+
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,0.08),
+    0 0 0 1px rgba(5, 8, 35, 0.75),
+    0 0 18px rgba(80, 120, 255, 0.28),
+    0 0 30px rgba(180, 50, 180, 0.18);
+
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+  .projectDots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 12px;
+  }
+
+  .projectDot{
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.35);
+    transition: width .25s ease, background .25s ease, opacity .25s ease;
+  }
+
+  .projectDot.isActive{
+    width: 22px;
+    background: linear-gradient(90deg,
+      rgba(155, 15, 97, 0.95),
+      rgba(61, 9, 158, 0.9)
+    );
+  }
+
+
+}
 
 
 

@@ -117,4 +117,138 @@ setBioMode();
 window.addEventListener("resize", setBioMode);
 
 
+/*About WorkingBlock page*/
+const workingBlock = document.querySelector(".workingBlock");
 
+function setWorkingMode(){
+  if (!workingBlock) return;
+
+  if (window.innerWidth > 768) {
+    workingBlock.open = true;   // desktop: always open
+  } else if (!workingBlock.dataset.mobileReady) {
+    workingBlock.open = false;  // mobile: closed first time
+    workingBlock.dataset.mobileReady = "true";
+  }
+}
+
+setWorkingMode();
+window.addEventListener("resize", setWorkingMode);
+
+
+
+/*About myStory page*/
+const myStory = document.querySelector(".myStory");
+
+function setStoryMode(){
+  if (!myStory) return;
+
+  if (window.innerWidth > 768) {
+    myStory.open = true;   // desktop: always open
+  } else if (!myStory.dataset.mobileReady) {
+    myStory.open = false;  // mobile: closed first time
+    myStory.dataset.mobileReady = "true";
+  }
+}
+
+setStoryMode();
+window.addEventListener("resize", setStoryMode);
+
+
+
+/*Projects slide*/
+const projectGrid = document.querySelector(".grid");
+const projectCards = document.querySelectorAll(".grid .projectCard");
+
+function updateSelectedCard(){
+  if (!projectGrid || projectCards.length === 0) return;
+
+  const gridCenter = projectGrid.scrollLeft + projectGrid.clientWidth / 2;
+
+  let closestCard = null;
+  let closestDistance = Infinity;
+
+  projectCards.forEach((card) => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const distance = Math.abs(gridCenter - cardCenter);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestCard = card;
+    }
+  });
+
+  projectCards.forEach((card) => {
+    card.classList.remove("isSelected");
+  });
+
+  if (closestCard) {
+    closestCard.classList.add("isSelected");
+  }
+}
+
+if (projectGrid) {
+  updateSelectedCard();
+  projectGrid.addEventListener("scroll", updateSelectedCard);
+  window.addEventListener("resize", updateSelectedCard);
+}
+
+
+/*Projects Slides dots*/
+document.addEventListener("DOMContentLoaded", () => {
+  const projectGrid = document.querySelector(".grid");
+  const projectCards = document.querySelectorAll(".grid .projectCard");
+  const projectDots = document.querySelectorAll(".projectDot");
+
+  if (!projectGrid || projectCards.length === 0) return;
+
+  function updateSelectedCard() {
+    const gridCenter = projectGrid.scrollLeft + projectGrid.clientWidth / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    projectCards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(gridCenter - cardCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    projectCards.forEach((card) => {
+      card.classList.remove("isSelected");
+    });
+
+    projectDots.forEach((dot) => {
+      dot.classList.remove("isActive");
+    });
+
+    projectCards[closestIndex].classList.add("isSelected");
+
+    if (projectDots[closestIndex]) {
+      projectDots[closestIndex].classList.add("isActive");
+    }
+  }
+
+  projectDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      const card = projectCards[index];
+      if (!card) return;
+
+      const targetLeft =
+        card.offsetLeft - (projectGrid.clientWidth - card.offsetWidth) / 2;
+
+      projectGrid.scrollTo({
+        left: targetLeft,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  projectGrid.addEventListener("scroll", updateSelectedCard);
+  window.addEventListener("resize", updateSelectedCard);
+
+  updateSelectedCard();
+});
