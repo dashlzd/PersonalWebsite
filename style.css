@@ -215,7 +215,7 @@ main::-webkit-scrollbar{
 
 main.right{
   position: relative;
-  overflow: hidden;  
+  overflow: auto;  
   display: flex;
   flex-direction: column;  /* stack box + buttons vertically */
   align-items: left;     /* center the whole main content */
@@ -286,7 +286,7 @@ main.right .btnRow{
   transform: translateX(20px) scale(1.2);
 }
 .home-wrap .btnRow{
-  font-size: 3rem;
+  font-size: 3.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -357,40 +357,46 @@ main.right{ outline: 0px solid cyan; }
   flex: 0 0 auto;
 }
 
-@media (max-width: 480px){ 
+@media (max-width: 768px){ 
 
 .home-wrap .box{
   width: min(520px, 100%);
-  padding-top: 3rem; /* top margin for top*/
-  margin-left: auto;   /* push to the far right */
-  margin-right: 5rem;
+  padding-top: clamp(2rem, 5vh, 5rem);
+
+  margin-left: auto;
+  margin-right: clamp(1.5rem, 5vw, 5rem);
+
   text-align: right; 
 }
 
 .home-wrap .box h1{
-  font-size: 3.3rem;  
-  margin-right: 15px;           /* kills all h1 margins */
-  padding: 0;          /* kills the h1 padding from your global rule */
-  line-height: 1;      /* tighter line box */
+  font-size: clamp(2.8rem, 12vw, 3.5rem);
+  margin-right: clamp(12px, 1vw, 15px);
+  padding: 0;
+  line-height: 1;
 }
+
 .home-wrap .box p{
-  margin-right: 13px;           /* kills paragraph top margin */
+  margin-right: clamp(12px, 1vw, 15px);
   position: relative;
-  left: -1.2rem;
-  white-space: nowrap; /* for phone */
-  font-size: 0.6rem; 
+  left: clamp(-1.2rem, -1.2vw, -0.4rem);
+
+  white-space: nowrap;
+  font-size: clamp(0.55rem, calc(0.604vh + 0.298rem), 0.65rem);
 }
 
 .home-wrap .btnRow{
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 10vw, 3rem);
+
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: clamp(0.4rem, 1.3vw, 0.9rem);
   align-items: flex-start;
-  margin-top: 6rem;
+
+  margin-top: clamp(25px, calc(28.3vh - 164px), 100px);
 
   width: fit-content;
-  margin-left: clamp(0px, calc(min(100vw, 1920px) * 0.03), 6rem);
+  margin-left: clamp(0px, 3vw, 6rem);
 }
 
 .footer{
@@ -1133,6 +1139,7 @@ body{
   .contactBlock { order: 6; }
 
 
+
   /* =========================
      Intro / name section
   ========================= */
@@ -1148,7 +1155,7 @@ body{
     font-size: clamp(1rem, 10vw, 4rem);
     text-align: right;
     padding-top: 10px;
-    padding-right: 40px;
+    padding-right: 20px;
   }
 
   .rightPane .box .nameLine{
@@ -1158,13 +1165,13 @@ body{
 
     margin-top: 2px;
     margin-left: auto;
-    margin-right: 40px;
+    margin-right: 20px;
   }
 
   .rightPane .box p{
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     text-align: right;
-    padding-right: 40px;
+    padding-right: 20px;
   }
 
   .rightPane .box .intro{
@@ -1173,8 +1180,8 @@ body{
     max-width: 100%;
 
     padding-top: 10px !important;
-    padding-left: 35px !important;
-    padding-right: 35px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 
     font-size: clamp(0.95rem, 3.6vw, 1.15rem);
     line-height: 1.6;
@@ -1191,8 +1198,8 @@ body{
   ========================= */
 
  .rightPane .bioBlock{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1250,8 +1257,8 @@ body{
  .rightPane .bioBlock > .linkGrid{
     display: none !important;
     padding-right: 0px;
-    padding-left: 10px;
-    margin-left: 0px;
+    padding-left: 0px;
+    margin-left: 15px;
   }
 
   /* opened link cards, still mobile layout */
@@ -1262,8 +1269,8 @@ body{
     gap: 14px !important;
 
     /* wider, but still fits phone screen */
-    width: calc(90vw - 20px);
-    max-width: calc(90vw - 20px);
+    width: calc(90vw - 5px);
+    max-width: calc(90vw - 5px);
 
     /* center it */
     margin-top: 12px;
@@ -1271,14 +1278,14 @@ body{
   }
 
  .rightPane .bioBlock[open] > .linkGrid .linkCard{
-    width: 88vw;
-    max-width: calc(88vw - 24px);
+    width: 90vw;
+    max-width: calc(90vw - 5px);
     box-sizing: border-box;
 
     height: 100px;          /* ✅ shorter card */
     min-height: 100px;
   
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   /* open state */
@@ -1302,8 +1309,8 @@ body{
 
   .rightPane .resumeBlock{
     
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1412,8 +1419,8 @@ body{
 
 .rightPane .workingBlock{
     
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -1479,8 +1486,8 @@ body{
 ========================= */
 
 .leftPane .myStory{
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -1552,8 +1559,8 @@ body{
   Contact information
 ========================= */
 .rightPane .contactBlock{
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-bottom: 5px;
   width: 100%;
   max-width: 100%;
