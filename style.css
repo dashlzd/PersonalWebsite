@@ -2256,8 +2256,8 @@ letter-spacing: 0em;  }
   font-size: .85rem;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.12);
-  color: rgba(255,255,255,.72);
+  border: 2px solid rgba(222, 227, 230, 0.628);
+  color: rgba(255, 255, 255, 0.72);
   background: rgba(0,0,0,.18);
 }
 
@@ -2605,7 +2605,7 @@ letter-spacing: 0em;  }
   box-sizing: border-box;
   width: 100%;
   max-width: 980px;
-  margin: 18px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2692,7 +2692,6 @@ letter-spacing: 0em;  }
 .ProjectCard .projectHead{
   padding: 20px 0 0;
   font-size: 2rem;
-  letter-spacing: .04em;
   line-height: 1.15;
 }
 
@@ -3182,38 +3181,11 @@ letter-spacing: 0em;  }
     width: 100%;
   }
 
-  .architectureProjectCard-01,
-  .architectureProjectCard-02,
-  .architectureProjectCard-03,
-  .architectureProjectCard-04{
-    width: 100%;
-    max-width: 100%;
-
-    margin: 14px auto;
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  .architectureProjectCard-01 .projectDesc,
-  .architectureprojectDesc,
-  .architectureProjectCard-03 .projectDesc,
-  .architectureProjectCard-04 .projectDesc{
-    font-size: clamp(0.85rem, 3vw, 1rem);
-    line-height: 1.55;
-    padding: 14px 0;
-  }
-
   .projectTags{
     gap: 6px;
     padding-bottom: 14px;
   }
 
-  .architectureimageWrap-02,
-  .architectureProjectCard-03 .imageWrap-01,
-  .architectureProjectCard-04 .imageWrap-02{
-    width: 100%;
-    max-width: 100%;
-  }
 }
 
 
@@ -3285,26 +3257,7 @@ letter-spacing: 0em;  }
   display: block;
 }
 
-.aiImageWrap-02-02 > .projectDesc{
-  margin: 0;
-  padding: 0;
 
-  width: 100%;
-  max-width: none;
-  min-width: 0;
-
-  display: flex;
-  align-items: flex-end;
-
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: none;
-  word-break: normal;
-  overflow-wrap: normal;
-
-  line-height: 1.7;
-  box-sizing: border-box;
-}
 
 
 /* =========================
@@ -3415,11 +3368,6 @@ letter-spacing: 0em;  }
     gap: 6px;
   }
 
-  .aiImageWrap-02-02 > .projectDesc{
-    font-size: clamp(0.85rem, 3vw, 1rem);
-    line-height: 1.55;
-    padding: 14px 0;
-  }
 }
 
 /* =========================
@@ -3490,12 +3438,58 @@ letter-spacing: 0em;  }
 }
 
 .projectDesc{
+  display: block !important;
+  text-align: justify;
+  text-indent: 1.0em; /* first-line indent */
+  line-height: 1.55;
+}
+
+.projectDesc span{
   font-size: clamp(0.85rem, 3vw, 1rem);
   line-height: 1.55;
-  padding: 14px 0;
+  
+  text-align: justify;
+
+  background: linear-gradient(
+   transparent 18%,
+   rgba(38, 106, 194, 0.24) 28%,
+   rgba(236, 41, 161, 0.361) 90%,
+   transparent 92%
+  );
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  padding: 4px 3px;
 }
 
 }
+
+.projectDesc{
+  display: block !important;
+  text-align: justify;
+  text-indent: 1.2em; /* first-line indent */
+  line-height: 1.55;
+}
+
+.projectDesc span{
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  line-height: 1.55;
+
+  background: linear-gradient(
+    transparent 18%,
+    rgba(38, 106, 194, 0.24) 28%,
+    rgba(236, 41, 161, 0.361) 90%,
+    transparent 92%
+  );
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  padding: 4px 3px;
+}
+
+
 
 
 
