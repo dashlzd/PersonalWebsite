@@ -2578,24 +2578,127 @@ letter-spacing: 0em;  }
 
 @media (max-width: 768px){
 
+  /* =========================
+     MOBILE CHARACTER LAYOUT
+  ========================= */
+
   .chLayout-01,
-  .chLayout-02,
-  .chLayout-03,
-  .chLayout-04{
+  .chLayout-03{
+    display: grid;
+    grid-template-columns: 59.6939% minmax(0, 1fr);
+    grid-template-areas:
+      "left right"
+      "text text";
+    gap: 6px;
     width: 100%;
     max-width: 100%;
+
+    margin-bottom: 60px;
+  }
+
+  .chLayout-02,
+  .chLayout-04{
+    display: grid;
+    grid-template-columns: 38.7755% minmax(0, 1fr);
+    grid-template-areas:
+      "left right"
+      "text text";
     gap: 6px;
+    width: 100%;
+    max-width: 100%;
+
+    margin-bottom: 60px;
   }
 
-  .chLayout-01 .projectDesc,
-  .chLayout-02 .projectDesc,
-  .chLayout-03 .projectDesc,
-  .chLayout-04 .projectDesc{
-    font-size: clamp(0.85rem, 3vw, 1rem);
-    line-height: 1.55;
-    padding: 14px 0;
+
+  /* =========================
+     MAKE COLUMN WRAPPERS DISAPPEAR
+     so text can become full width
+  ========================= */
+
+  .chLayout-01 .rightCol,
+  .chLayout-03 .rightCol,
+  .chLayout-02 .leftCol,
+  .chLayout-02 .rightCol,
+  .chLayout-04 .leftCol,
+  .chLayout-04 .rightCol{
+    display: contents;
   }
 
+
+  /* =========================
+     IMAGE POSITION
+  ========================= */
+
+  .chLayout-01 .imgLeft,
+  .chLayout-03 .imgLeft,
+  .chLayout-02 .imgLeft,
+  .chLayout-04 .imgLeft{
+    grid-area: left;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .chLayout-01 .imgRight,
+  .chLayout-03 .imgRight,
+  .chLayout-02 .imgRight,
+  .chLayout-04 .imgRight{
+    grid-area: right;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+
+  /* =========================
+     IMAGE PROPORTIONS
+  ========================= */
+
+  .chLayout-01 .imgLeft,
+  .chLayout-03 .imgLeft{
+    aspect-ratio: 585 / 1040;
+  }
+
+  .chLayout-01 .imgRight,
+  .chLayout-03 .imgRight{
+    aspect-ratio: 380 / 560;
+  }
+
+  .chLayout-02 .imgLeft,
+  .chLayout-04 .imgLeft{
+    aspect-ratio: 380 / 560;
+  }
+
+  .chLayout-02 .imgRight,
+  .chLayout-04 .imgRight{
+    aspect-ratio: 585 / 1040;
+  }
+
+
+  /* =========================
+     MOBILE / DESKTOP TEXT SWITCH
+  ========================= */
+
+  .chLayout-01 .descDesktop,
+  .chLayout-02 .descDesktop,
+  .chLayout-03 .descDesktop,
+  .chLayout-04 .descDesktop{
+    display: none;
+  }
+
+  .chLayout-01 .descMobile,
+  .chLayout-02 .descMobile,
+  .chLayout-03 .descMobile,
+  .chLayout-04 .descMobile{
+    grid-area: text;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 /* right large image */
@@ -3438,6 +3541,7 @@ letter-spacing: 0em;  }
 }
 
 .projectDesc{
+  
   display: block !important;
   text-align: justify;
   text-indent: 1.0em; /* first-line indent */
@@ -3447,7 +3551,7 @@ letter-spacing: 0em;  }
 .projectDesc span{
   font-size: clamp(0.85rem, 3vw, 1rem);
   line-height: 1.55;
-  
+
   text-align: justify;
 
   background: linear-gradient(
@@ -3461,6 +3565,15 @@ letter-spacing: 0em;  }
   -webkit-box-decoration-break: clone;
 
   padding: 4px 3px;
+}
+
+
+.descDesktop{
+  display: none;
+}
+
+.descMobile{
+  display: block;
 }
 
 }
@@ -3490,8 +3603,40 @@ letter-spacing: 0em;  }
 }
 
 
+/* desktop default */
+.projectDesc.descDesktop{
+  display: block !important;
+}
 
+.projectDesc.descMobile{
+  display: none !important;
+}
 
+/* mobile */
+@media (max-width: 768px){
+  .projectDesc.descDesktop{
+    display: none !important;
+  }
+
+  .projectDesc.descMobile{
+    display: block !important;
+  }
+}
+
+.videoWrap.vimeo{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.videoWrap.vimeo iframe{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
 
 
 
