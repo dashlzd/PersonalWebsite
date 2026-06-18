@@ -340,7 +340,7 @@ main.right .btnRow .btn{
 .ProjectCard{ outline: 0px solid rgb(255, 230, 0); }
 .split{ outline: 0px solid lime; }
 .projectsMain{ outline: 2px solid rgba(50, 205, 50, 0.644); }
-main.right{ outline: 0px solid cyan; }
+.main.right{ outline: 0px solid cyan; }
 
 
 
