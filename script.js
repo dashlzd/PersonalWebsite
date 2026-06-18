@@ -252,3 +252,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateSelectedCard();
 });
+
+
+
+const lightbox = document.querySelector("#imageLightbox");
+const lightboxImg = document.querySelector(".lightboxImg");
+
+const zoomImages = document.querySelectorAll(`
+
+  .chLayout-01 img,
+  .chLayout-02 img,
+  .chLayout-04 img,
+  .aiImageWrap-01-01 img,
+  .aiImageWrap-02-01 img,
+  .aiImageWrap-02-02 img,
+  .aiImageWrap-02-03 img,
+  .aiImageWrap-02-04 img,
+  .aiImageWrap-02-05 img,
+  .architectureimageWrap-02-01 img,
+  .architectureimageWrap-02-02 img,
+  .architectureimageWrap-02-03 img,
+  .architectureimageWrap-03-01 img,
+  .architectureimageWrap-04-01 img,
+  .architectureimageWrap-04-02 img,
+  .craftImageWrap-01-01 img,
+  .craftImageWrap-01-02 img,
+  .craftImageWrap-02-01 img,
+  .craftImageWrap-02-02 img,
+  .craftImageWrap-02-03 img,
+  .craftImageWrap-03-01 img,
+  .craftImageWrap-03-02 img,
+  .craftImageWrap-04-01 img,
+  .treatLayout img
+
+`);
+
+zoomImages.forEach((img) => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || "Large project image";
+
+    lightbox.classList.add("isOpen");
+    document.body.classList.add("lightboxOpen");
+  });
+});
+
+function closeLightbox(){
+  lightbox.classList.remove("isOpen");
+  document.body.classList.remove("lightboxOpen");
+  lightboxImg.src = "";
+}
+
+lightbox.addEventListener("click", closeLightbox);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});

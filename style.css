@@ -339,9 +339,8 @@ main.right .btnRow .btn{
 .projectWrap{outline: 0px solid rgb(0, 195, 255); }
 .ProjectCard{ outline: 0px solid rgb(255, 230, 0); }
 .split{ outline: 0px solid lime; }
-.projectsMain{ outline: 2px solid lime; }
+.projectsMain{ outline: 2px solid rgba(50, 205, 50, 0.644); }
 main.right{ outline: 0px solid cyan; }
-
 
 
 
@@ -1699,6 +1698,7 @@ body{
   cursor: pointer;
   text-align: left;
   height: 300px;
+  margin-bottom: 20px;
 
   /* background image */
   background-image: var(--bg);
@@ -2709,6 +2709,7 @@ letter-spacing: 0em;  }
   width: 100%;
   max-width: 980px;
   margin: 0px auto;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3568,14 +3569,6 @@ letter-spacing: 0em;  }
 }
 
 
-.descDesktop{
-  display: none;
-}
-
-.descMobile{
-  display: block;
-}
-
 }
 
 .projectDesc{
@@ -3614,31 +3607,112 @@ letter-spacing: 0em;  }
 
 /* mobile */
 @media (max-width: 768px){
-  .projectDesc.descDesktop{
-    display: none !important;
-  }
 
-  .projectDesc.descMobile{
-    display: block !important;
-  }
+.projectDesc.descDesktop{
+  display: none !important;
 }
 
-.videoWrap.vimeo{
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  aspect-ratio: 16 / 9;
+.projectDesc.descMobile{
+  display: block !important;
+}
+
+}
+
+@media (max-width: 768px){
+
+.architectureimageWrap-02-02 img{
+  cursor: zoom-in;
+}
+
+.imageLightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.imageLightbox.isOpen{
+  display: flex;
+}
+
+.imageLightbox .lightboxImg{
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+
+body.lightboxOpen{
   overflow: hidden;
 }
-
-.videoWrap.vimeo iframe{
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
 }
 
+.imageLightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
 
+  display: none;
+  place-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.imageLightbox.isOpen{
+  display: grid;
+}
+
+.imageLightbox .lightboxImg{
+  display: block;
+
+  max-width: 95vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+  margin: auto;
+}
+
+.lightboxClose{
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 10000;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.18);
+  color: white;
+
+  font-size: 30px;
+  line-height: 42px;
+  cursor: pointer;
+}
+
+body.lightboxOpen{
+  overflow: hidden;
+}
 
 
 
