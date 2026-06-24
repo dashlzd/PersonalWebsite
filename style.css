@@ -336,7 +336,7 @@ main.right .btnRow .btn{
 
 .pageWrap{ outline: 0px solid red; }
 .container{ outline: 0px solid lime; }
-.projectWrap{outline: 0px solid rgb(0, 195, 255); }
+.projectWrap{ outline: 0px solid rgb(0, 195, 255); }
 .ProjectCard{ outline: 0px solid rgb(255, 230, 0); }
 .split{ outline: 0px solid lime; }
 .projectsMain{ outline: 2px solid rgba(50, 205, 50, 0.644); }
@@ -1980,7 +1980,7 @@ letter-spacing: 0em;  }
 
 /* reduce overlap */
 .grid .projectCard + .projectCard{
-  margin-left: -24px; /* was -32px */
+  margin-left: -100px; /* was -32px */
 }
 
 .grid .projectCard.isSelected{
@@ -3484,6 +3484,7 @@ letter-spacing: 0em;  }
   width: 100%;
   max-width: 980px;
   margin: 0 auto;
+  margin-bottom: 20px;
 
   aspect-ratio: 980 / 880;
   overflow: hidden;
@@ -3493,30 +3494,32 @@ letter-spacing: 0em;  }
 .treatLayout > img{
   position: absolute;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background: #000;
 }
 
-/* background / main image */
+/* top image: 550px height */
 .treatLayout > img:nth-child(1){
   left: 0%;
   top: 0%;
 
   width: 100%;
-  height: 100%;
+  height: 62.5%; /* 550 / 880 */
 }
 
 /* bottom left */
 .treatLayout > img:nth-child(2){
   left: 0%;
-  top: 63.6363%;
+  top: 63.6363%; /* 560 / 880, leaves 10px gap */
 
-  width: 32.6531%;
-  height: 36.3636%;
+  width: 32.6531%; /* 320 / 980 */
+  height: 36.3636%; /* 320 / 880 */
 }
 
 /* bottom middle */
 .treatLayout > img:nth-child(3){
-  left: 33.6735%;
+  left: 33.6735%; /* 330 / 980 */
   top: 63.6363%;
 
   width: 32.6531%;
@@ -3525,7 +3528,7 @@ letter-spacing: 0em;  }
 
 /* bottom right */
 .treatLayout > img:nth-child(4){
-  left: 67.3469%;
+  left: 67.3469%; /* 660 / 980 */
   top: 63.6363%;
 
   width: 32.6531%;
@@ -3714,5 +3717,8 @@ body.lightboxOpen{
   overflow: hidden;
 }
 
-
-
+@media (max-width: 768px){
+  .projectCard .muted{
+    display: none;
+  }
+}
