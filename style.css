@@ -339,7 +339,7 @@ main.right .btnRow .btn{
 .projectWrap{ outline: 0px solid rgb(0, 195, 255); }
 .ProjectCard{ outline: 0px solid rgb(255, 230, 0); }
 .split{ outline: 0px solid lime; }
-.projectsMain{ outline: 2px solid rgba(50, 205, 50, 0.644); }
+.projectsMain{ outline: 0px solid rgba(50, 205, 50, 0.644); }
 .main.right{ outline: 0px solid cyan; }
 
 
@@ -3721,4 +3721,5 @@ body.lightboxOpen{
   .projectCard .muted{
     display: none;
   }
+  .projectsMain{ outline: 2px solid rgba(50, 205, 50, 0.644); }
 }
